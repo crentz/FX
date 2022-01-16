@@ -12,7 +12,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 echo "deb http://deb.devuan.org/merged chimaera contrib non-free" >> /etc/apt/sources.list ;
 apt update && apt upgrade -y ;
-apt install sudo xserver-xorg xinit fluxbox featherpad lxappearance sakura viewnior xpaint xpdf xarchiver vlc gparted synaptic bleachbit gufw xfburn alsa-utils apulse wbar wbar-config nitrogen yad firmware-linux-nonfree firmware-misc-nonfree firmware-b43-installer firmware-b43legacy-installer firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 network-manager-gnome -y ;
+apt install sudo xserver-xorg xinit fluxbox featherpad lxappearance sakura viewnior xpaint xpdf xarchiver vlc gparted synaptic grub-pc gufw xfburn alsa-utils apulse wbar wbar-config nitrogen yad firmware-linux-nonfree firmware-misc-nonfree firmware-b43-installer firmware-b43legacy-installer firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 network-manager-gnome -y ;
 touch /etc/skel/.bash_profile ;
 echo "#! /bin/bash" >> /etc/skel/.bash_profile ;
 echo "if [[ -z $DISPLAY ]] [[ $(tty) = /dev/tty1 ]]; then exec startx; fi" >> /etc/skel/.bash_profile ;
