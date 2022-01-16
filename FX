@@ -1,0 +1,36 @@
+#!/bin/bash
+
+
+############################
+#     Packages Install
+############################
+
+
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
+fi
+echo "deb http://deb.devuan.org/merged chimaera contrib non-free" >> /etc/apt/sources.list ;
+apt update && apt upgrade -y ;
+apt install sudo xserver-xorg xinit fluxbox featherpad lxappearance sakura viewnior xpaint xpdf xarchiver vlc gparted synaptic bleachbit gufw xfburn alsa-utils apulse wbar wbar-config nitrogen yad firmware-linux-nonfree firmware-misc-nonfree firmware-b43-installer firmware-b43legacy-installer firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 network-manager-gnome -y ;
+touch /etc/skel/.bash_profile ;
+echo "#! /bin/bash" >> /etc/skel/.bash_profile ;
+echo "if [[ -z $DISPLAY ]] [[ $(tty) = /dev/tty1 ]]; then exec startx; fi" >> /etc/skel/.bash_profile ;
+sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
+rm -rf /usr/share/fluxbox/styles ;
+cd /etc/skel ;
+wget https://raw.githubusercontent.com/crentz/FX/main/FX.zip ;
+unzip FX.zip ;
+mkdir /usr/share/wallpaper ;
+cp -r backgrounds /usr/share/wallpaper/ ;
+rm -rf backgrounds ;
+apt install ./badwolf_20220116-1_i386.deb -y ;
+rm -rf badwolf_20220116-1_i386.deb ;
+update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/local/bin/badwolf 200 ;
+mv Byef /usr/bin ;
+mv fbscreensize /usr/bin ;
+cp -r Dark-f /usr/share/themes/ ;
+rm -rf Dark-f ;
+rm -rf FX.zip ;
+
+echo "Packages finished and installed succesfully. Enjoy !"
