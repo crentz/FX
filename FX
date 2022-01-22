@@ -11,7 +11,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 apt update && apt upgrade -y ;
-apt install sudo wget unzip curl ca-certificates xserver-xorg xinit fluxbox featherpad lxappearance  sakura viewnior xpaint xpdf xarchiver pcmanfm udevil gparted synaptic grub-pc gufw xfburn alsa-utils apulse wbar wbar-config nitrogen yad firmware-linux-nonfree firmware-misc-nonfree firmware-b43-installer firmware-b43legacy-installer firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 network-manager-gnome -y ;
+apt install sudo wget unzip curl ca-certificates xserver-xorg xinit fluxbox featherpad lxappearance sakura viewnior xpaint xpdf xarchiver pcmanfm udevil gparted synaptic grub-pc gufw xfburn alsa-utils apulse wbar wbar-config nitrogen yad firmware-linux-nonfree firmware-misc-nonfree firmware-b43-installer firmware-b43legacy-installer firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 network-manager-gnome -y ;
 touch /etc/skel/.bash_profile ;
 echo `#! /bin/bash` >> /etc/skel/.bash_profile ;
 echo `if [[ -z $DISPLAY ]] [[ $(tty) =/dev/tty1 ]]; then exec startx; fi` >> /etc/skel/.bash_profile ;
