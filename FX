@@ -25,12 +25,9 @@ cp -r backgrounds /usr/share/wallpaper/ ;
 rm -rf backgrounds ;
 mv Byef /usr/bin ;
 mv fbscreensize /usr/bin ;
-cp -r Dark-f /usr/share/themes/ ;
-rm -rf Dark-f ;
+cp -r Dark-f ambiance Trollwut /usr/share/themes/ ;
+rm -rf Dark-f ambiance Trollwut ;
 rm -rf FX.zip ;
-wget https://raw.githubusercontent.com/crentz/FX/main/wvcdm.zip ;
-unzip wvcdm.zip ;
-mv libwidevinecdm.so /usr/lib/qt/plugins/ppapi/ ;
-mv libwidevinecdmadapter.so /usr/lib/qt/plugins/ppapi/ ;
+
 
 echo "Packages finished and installed succesfully. Enjoy !"
