@@ -11,8 +11,41 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 apt update && apt upgrade -y ;
-apt install sudo wget unzip curl xserver-xorg slim fluxbox featherpad qutebrowser lxappearance sakura viewnior xpaint xpdf xarchiver pcmanfm udevil gparted synaptic grub-pc gufw xfburn alsa-utils apulse wbar wbar-config nitrogen yad firmware-linux-nonfree firmware-misc-nonfree firmware-b43-installer firmware-b43legacy-installer firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 network-manager-gnome -y ;
-touch /etc/skel/.bash_profile ;
+apt install sudo \
+wget \
+unzip \
+curl \
+xserver-xorg \
+fluxbox \
+featherpad \
+lxappearance \
+sakura \
+viewnior \
+xpaint \
+xpdf \
+xarchiver \
+pcmanfm \
+udevil \
+gparted \
+synaptic \
+gufw \
+xfburn \
+alsa-utils \
+volumeicon-alsa \
+apulse \
+wbar \
+wbar-config \
+nitrogen \
+yad \
+firmware-linux-nonfree \
+firmware-misc-nonfree \
+firmware-b43-installer \
+firmware-b43legacy-installer \
+firmware-realtek \
+firmware-atheros \
+firmware-iwlwifi \
+firmware-brcm80211 \
+network-manager-gnome -y ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 cd /etc/skel ;
@@ -21,11 +54,11 @@ unzip FX.zip ;
 mkdir /usr/share/wallpaper ;
 cp -r backgrounds /usr/share/wallpaper/ ;
 rm -rf backgrounds ;
-mv Byef fbscreensize /usr/bin ;
+cp Byef fbscreensize /usr/bin/ ;
 cp -r Dark-f ambiance Trollwut /usr/share/themes/ ;
-rm -rf Dark-f ambiance Trollwut ;
+rm -rf Dark-f ambiance Trollwut Byef fbscreensize ;
 rm -rf FX.zip ;
 cd ;
-rm -rf FX
+rm -rf FX ;
 
 echo "Packages finished and installed succesfully. Enjoy !"
