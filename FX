@@ -59,7 +59,7 @@ cp Byef fbscreensize /usr/bin/ ;
 cp -r Dark-f ambiance Trollwut /usr/share/themes/ ;
 rm -rf Dark-f ambiance Trollwut Byef fbscreensize ;
 rm -rf FX.zip ;
-cp -r .config .fluxbox .bash-profile .wbar .gtkrc-2.0 ~/ ;
-cd ;
+cp -r .config .fluxbox .wbar .gtkrc-2.0 ~/ ;
+cd ~/ ;
 rm -rf FX ;
 echo "Packages finished and installed succesfully. Enjoy !"
