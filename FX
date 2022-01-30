@@ -17,6 +17,7 @@ unzip \
 curl \
 xserver-xorg \
 fluxbox \
+xdm \
 featherpad \
 lxappearance \
 sakura \
