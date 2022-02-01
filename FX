@@ -10,6 +10,9 @@ if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 
    exit 1
 fi
+sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
+echo -e "\ndeb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main" | sudo tee -a /etc/apt/sources.list > /dev/null ;
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2667CA5C ;
 apt update && apt upgrade -y ;
 apt install sudo \
 wget \
@@ -38,7 +41,7 @@ wbar \
 wbar-config \
 nitrogen \
 yad \
-chromium \
+seamonkey-mozilla-build \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-b43-installer \
