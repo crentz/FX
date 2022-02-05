@@ -20,7 +20,7 @@ unzip \
 curl \
 xserver-xorg \
 fluxbox \
-xdm \
+slim \
 featherpad \
 lxappearance \
 sakura \
@@ -58,12 +58,13 @@ curl -LJO https://raw.githubusercontent.com/crentz/FX/main/FX.zip ;
 unzip FX.zip ;
 mkdir /usr/share/wallpaper ;
 cp -r backgrounds /usr/share/wallpaper/ ;
+cp -r fxs /usr/share/slim/themes/ ;
+sed -i 's/desktop-slim-theme/fxs/' /etc/slim.conf ;
 rm -rf backgrounds ;
-cp Byef fbscreensize /usr/bin/ ;
+rm -rf fxs ;
 cp -r Dark-f ambiance Trollwut /usr/share/themes/ ;
 rm -rf Dark-f ambiance Trollwut Byef fbscreensize ;
 rm -rf FX.zip ;
-cp -r .config .fluxbox .wbar .gtkrc-2.0 ~/ ;
 cd ~/ ;
 rm -rf FX ;
 echo "Packages finished and installed succesfully. Enjoy !"
