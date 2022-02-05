@@ -19,10 +19,12 @@ wget \
 unzip \
 curl \
 xserver-xorg \
+arandr \
 fluxbox \
 slim \
 featherpad \
 lxappearance \
+lxpolkit \
 sakura \
 viewnior \
 xpaint \
@@ -62,6 +64,10 @@ cp -r fxs /usr/share/slim/themes/ ;
 sed -i 's/desktop-slim-theme/fxs/' /etc/slim.conf ;
 rm -rf backgrounds ;
 rm -rf fxs ;
+mv CCP /usr/bin/ ;
+mv Byef /usr/bin/ ;
+chmod +x /usr/bin/Byef ;
+chmod +x /usr/bin/CCP ;
 cp -r Dark-f ambiance Trollwut /usr/share/themes/ ;
 rm -rf Dark-f ambiance Trollwut Byef fbscreensize ;
 rm -rf FX.zip ;
