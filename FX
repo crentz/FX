@@ -11,8 +11,6 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
-echo -e "\ndeb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main" | sudo tee -a /etc/apt/sources.list > /dev/null ;
-sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2667CA5C ;
 apt update && apt upgrade -y ;
 apt install sudo \
 wget \
@@ -43,7 +41,8 @@ wbar \
 wbar-config \
 nitrogen \
 yad \
-seamonkey-mozilla-build \
+refractasnapshot-base \
+refractainstaller-gui \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-b43-installer \
@@ -74,4 +73,13 @@ rm -rf Dark-f ambiance Trollwut ;
 rm -rf FX.zip ;
 cd ~/ ;
 rm -rf FX ;
+curl -LJO https://raw.githubusercontent.com/crentz/FX/main/seamonkey.deb ;
+apt install ./seamonkey.deb -y ;
+rm -rf seamonkey.deb ;
+su fluxuan ;
+cd /etc/skel/ ;
+cp -r .config .fluxbox .mozilla .gtkrc-2.0 .wbar ~/ ;
+cd ~/ ;
+mkdir .screenlayout ;
+ls -all ;
 echo "Packages finished and installed succesfully. Enjoy !"
