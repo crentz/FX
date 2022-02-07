@@ -1,0 +1,13 @@
+#!/bin/bash
+lb config \
+--mode debian \
+--system live \
+--interactive shell \
+--distribution buster \
+--debian-installer live \
+--architecture i386 \
+--archive-areas "main contrib non-free" \
+--security true \
+--updates true \
+--binary-images iso-hybrid \
+--memtest none \
