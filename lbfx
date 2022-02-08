@@ -1,13 +1,32 @@
 #!/bin/bash
-lb config \
---mode debian \
---system live \
---interactive shell \
---distribution buster \
---debian-installer live \
---architecture i386 \
---archive-areas "main contrib non-free" \
---security true \
---updates true \
---binary-images iso-hybrid \
---memtest none \
+
+
+lb config noauto \
+	--mode devuan \
+  --initsystem sysvinit \
+  --system live \
+  --interactive shell \
+	--chroot-filesystem squashfs \
+	--distribution "chimaera" \
+	--debian-installer-distribution "chimaera" \
+	--debian-installer live \
+	--architectures "i386" \
+	--linux-flavours "686" \
+	--apt-recommends false \
+	--apt-secure true \
+	--apt-indices false \
+	--apt-source-archives true \
+	--archive-areas "main contrib non-free" \
+	--parent-mirror-bootstrap "http://packages.devuan.org/merged" \
+	--parent-mirror-binary "http://packages.devuan.org/merged" \
+	--mirror-bootstrap "http://packages.devuan.org/merged" \
+	--mirror-binary "http://packages.devuan.org/merged" \
+	--iso-application "fluxuan Linux" \
+	--iso-publisher "wdq" \
+	--iso-volume "fluxuan Live" \
+	--backports false \
+	--security true \
+  --updates true \
+	--memtest none \
+	--bootappend-live "boot=live" \
+"${@}"
