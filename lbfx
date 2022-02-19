@@ -1,14 +1,13 @@
 #!/bin/bash
 
-
 lb config noauto \
-	--mode devuan \
+	--mode debian \
         --initsystem sysvinit \
         --system live \
         --interactive shell \
 	--chroot-filesystem squashfs \
-	--distribution "chimaera" \
-	--debian-installer-distribution "chimaera" \
+	--distribution "bullseye" \
+	--debian-installer-distribution "bullseye" \
 	--debian-installer live \
 	--architectures "i386" \
 	--linux-flavours "686" \
@@ -17,12 +16,13 @@ lb config noauto \
 	--apt-indices false \
 	--apt-source-archives true \
 	--archive-areas "main contrib non-free" \
-	--iso-application "fluxuan Linux" \
-	--iso-publisher "wdq" \
-	--iso-volume "fluxuan Live" \
+	--iso-application "Fluxuan Linux" \
+	--iso-publisher "P. Crentz" \
+	--iso-volume "Fluxuan Linux" \
 	--backports false \
 	--security true \
         --updates true \
 	--memtest none \
 	--bootappend-live "boot=live" \
-"${@}"
+	--binary-images iso-hybrid \
+	"${@}"
