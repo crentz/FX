@@ -42,8 +42,6 @@ wbar-config \
 nitrogen \
 smplayer \
 yad \
-refractasnapshot-base \
-refractainstaller-gui \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-b43-installer \
@@ -67,20 +65,16 @@ rm -rf fxs ;
 mv CCP /usr/bin/ ;
 mv Byef /usr/bin/ ;
 mv start.wav /usr/share/sounds/ ;
+mv fx /usr/share/ ;
 chmod +x /usr/bin/Byef ;
 chmod +x /usr/bin/CCP ;
 cp -r Dark-f ambiance Trollwut /usr/share/themes/ ;
 rm -rf Dark-f ambiance Trollwut ;
 rm -rf FX.zip ;
+mkdir .screenlayout ;
 cd ~/ ;
 rm -rf FX ;
 curl -LJO https://repo.sparkylinux.org/pool/main/s/seamonkey/seamonkey_2.53.10.2~repack0_i386.deb ;
-apt install ./seamonkey/seamonkey_2.53.10.2~repack0_i386.deb -y ;
-rm -rf seamonkey/seamonkey_2.53.10.2~repack0_i386.deb ;
-usermod -aG sudo fluxuan ;
-su fluxuan ;
-cd /etc/skel/ ;
-cp -r .config .fluxbox .mozilla .gtkrc-2.0 .wbar /home/fluxuan/ ;
-cd /home/fluxuan/ ;
-mkdir .screenlayout ;
+apt install ./seamonkey_2.53.10.2~repack0_i386.deb -y ;
+rm -rf seamonkey_2.53.10.2~repack0_i386.deb ;
 echo "Packages finished and installed succesfully. Enjoy !"
