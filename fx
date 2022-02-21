@@ -42,6 +42,9 @@ wbar-config \
 nitrogen \
 smplayer \
 yad \
+qutebrowser \
+refractasnapshot-base \
+refractainstaller-gui \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-b43-installer \
@@ -57,11 +60,9 @@ cd /etc/skel ;
 curl -LJO https://raw.githubusercontent.com/crentz/FX/main/FX.zip ;
 unzip FX.zip ;
 mkdir /usr/share/wallpaper ;
-cp -r backgrounds /usr/share/wallpaper/ ;
-cp -r fxs /usr/share/slim/themes/ ;
+mv backgrounds /usr/share/wallpaper/ ;
+mv fxs /usr/share/slim/themes/ ;
 sed -i 's/desktop-slim-theme/fxs/' /etc/slim.conf ;
-rm -rf backgrounds ;
-rm -rf fxs ;
 mv CCP /usr/bin/ ;
 mv Byef /usr/bin/ ;
 mv start.wav /usr/share/sounds/ ;
@@ -72,9 +73,9 @@ cp -r Dark-f ambiance Trollwut /usr/share/themes/ ;
 rm -rf Dark-f ambiance Trollwut ;
 rm -rf FX.zip ;
 mkdir .screenlayout ;
-cd ~/ ;
 rm -rf FX ;
-curl -LJO https://repo.sparkylinux.org/pool/main/s/seamonkey/seamonkey_2.53.10.2~repack0_i386.deb ;
-apt install ./seamonkey_2.53.10.2~repack0_i386.deb -y ;
-rm -rf seamonkey_2.53.10.2~repack0_i386.deb ;
+usermod -aG sudo fluxuan ;
+su fluxuan ;
+cd /etc/skel/ ;
+cp -r * ~/ ; 
 echo "Packages finished and installed succesfully. Enjoy !"
