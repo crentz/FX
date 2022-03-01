@@ -16,10 +16,10 @@ apt install sudo \
 wget \
 unzip \
 curl \
-xserver-xorg \
+xorg \
 arandr \
 fluxbox \
-slim \
+xdm \
 featherpad \
 lxappearance \
 lxpolkit \
@@ -42,7 +42,8 @@ wbar-config \
 nitrogen \
 smplayer \
 yad \
-qutebrowser \
+bleachbit \
+localepurge \
 refractasnapshot-base \
 refractainstaller-gui \
 firmware-linux-nonfree \
@@ -54,28 +55,10 @@ firmware-atheros \
 firmware-iwlwifi \
 firmware-brcm80211 \
 network-manager-gnome -y ;
-sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
-rm -rf /usr/share/fluxbox/styles ;
-cd /etc/skel ;
-curl -LJO https://raw.githubusercontent.com/crentz/FX/main/FX.zip ;
-unzip FX.zip ;
-mkdir /usr/share/wallpaper ;
-mv backgrounds /usr/share/wallpaper/ ;
-mv fxs /usr/share/slim/themes/ ;
-sed -i 's/desktop-slim-theme/fxs/' /etc/slim.conf ;
-mv CCP /usr/bin/ ;
-mv Byef /usr/bin/ ;
-mv start.wav /usr/share/sounds/ ;
-mv fx /usr/share/ ;
-chmod +x /usr/bin/Byef ;
-chmod +x /usr/bin/CCP ;
-cp -r Dark-f ambiance Trollwut /usr/share/themes/ ;
-rm -rf Dark-f ambiance Trollwut ;
-rm -rf FX.zip ;
-mkdir .screenlayout ;
-rm -rf FX ;
+dpkg-reconfigure localepurge ;
 usermod -aG sudo fluxuan ;
 su fluxuan ;
-cd /etc/skel/ ;
-cp -r * ~/ ; 
+curl -LJO raw.githubusercontent.com/crentz/FX/main/fx.deb ;
+curl -LJO raw.githubusercontent.com/crentz/FX/main/badwolf.deb ;
+
 echo "Packages finished and installed succesfully. Enjoy !"
