@@ -97,6 +97,9 @@ rm -rf fx.zip ;
 su fluxuan ;
 cd /etc/skel/ ;
 cp -R .config .fluxbox .wbar .gtkrc-2.0 .screenlayout /home/fluxuan/ ;
+cd /home/fluxuan/ ;
+curl -LJO raw.githubusercontent.com/crentz/FX/main/badwolf.deb
+sudo apt install ./badwolf.deb ;
 logout ;
 rm -rf fx ;
 rm -rf /usr/share/doc/* /usr/share/man/* /usr/share/groff/* /usr/share/info/* ;
