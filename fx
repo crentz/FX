@@ -11,11 +11,11 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
-cat << EOF > /etc/apt/apt.conf
-Acquire::ForceIPv4 "true";
-Acquire::Languages "0";
-APT::Install-Recommends "0";
-EOF ;
+cat <<EOF > /etc/apt/apt.conf
+Acquire::ForceIPv4 "true"
+Acquire::Languages "0"
+APT::Install-Recommends "0"
+EOF 
 apt update && apt upgrade -y ;
 apt install sudo \
 wget \
@@ -59,7 +59,6 @@ firmware-atheros \
 firmware-iwlwifi \
 firmware-brcm80211 \
 network-manager-gnome -y ;
-dpkg-reconfigure localepurge ;
 usermod -aG sudo fluxuan ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
@@ -71,15 +70,14 @@ sed -i 's/Devuan/Fluxuan/' /etc/default/grub ;
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/' /etc/default/grub ;
 sed -i 's/GRUB_THEME/#GRUB_THEME/' /etc/default/grub ;
 
-cat << EOF > /etc/sysctl.d/fluxuanctl.conf
+cat <<EOF > /etc/sysctl.d/fluxuanctl.conf
 vm.swappiness = 10
 vm.dirty_ratio = 40
 vm.dirty_background_ratio = 2
 vm.vfs_cache_pressure = 50
-EOF ;
-
+EOF
 rm -rf /usr/share/desktop-base ;
-cd /etc/skel ;
+cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/FX/main/fx.zip ;
 unzip fx.zip ;
 mv fxslim /usr/share/slim/themes ;
@@ -92,7 +90,7 @@ rm -rf /boot/grub/splash.png ;
 cp /usr/share/fx/splash.png /boot/grub/ ;
 mv start.wav /usr/share/sounds/ ;
 cp /usr/share/fx/splash.png /usr/lib/refractasnapshot/iso/isolinux ;
-sed 's/*.current_theme.*/current_theme fxslim/' ;
+sed 's/*.current_theme.*/current_theme fxslim/' /etc/slim.conf ;
 rm -rf fx.zip ;
 su fluxuan ;
 cd /etc/skel/ ;
