@@ -11,11 +11,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
-cat <<EOF > /etc/apt/apt.conf
-Acquire::ForceIPv4 "true"
-Acquire::Languages "0"
-APT::Install-Recommends "0"
-EOF 
+echo -e "Acquire::ForceIPv4 "true"/nAcquire::Languages "0"/nAPT::Install-Recommends "0"" >> /etc/apt/apt.conf ;
 apt update && apt upgrade -y ;
 apt install sudo \
 wget \
@@ -48,6 +44,7 @@ nitrogen \
 smplayer \
 yad \
 bleachbit \
+libwebkit2gtk-4.0-dev \
 refractasnapshot-base \
 refractainstaller-gui \
 firmware-linux-nonfree \
@@ -69,13 +66,7 @@ sed -i 's/Devuan/Fluxuan/' /etc/os-release ;
 sed -i 's/Devuan/Fluxuan/' /etc/default/grub ;
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/' /etc/default/grub ;
 sed -i 's/GRUB_THEME/#GRUB_THEME/' /etc/default/grub ;
-
-cat <<EOF > /etc/sysctl.d/fluxuanctl.conf
-vm.swappiness = 10
-vm.dirty_ratio = 40
-vm.dirty_background_ratio = 2
-vm.vfs_cache_pressure = 50
-EOF
+echo -e "vm.swappiness = 10/nvm.dirty_ratio = 40/nvm.dirty_background_ratio = 2/nvm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/FX/main/fx.zip ;
@@ -98,10 +89,15 @@ cp -R .config .fluxbox .wbar .gtkrc-2.0 .screenlayout /home/fluxuan/ ;
 cd /home/fluxuan/ ;
 curl -LJO raw.githubusercontent.com/crentz/FX/main/badwolf.deb
 sudo apt install ./badwolf.deb ;
-logout ;
+exit ;
 rm -rf fx ;
-rm -rf /usr/share/doc/* /usr/share/man/* /usr/share/groff/* /usr/share/info/* ;
-rm -rf /usr/share/lintian/* /usr/share/linda/* /var/cache/man/* ;
+rm -rf /usr/share/doc/* ; 
+rm -rf /usr/share/man/* ;
+rm -rf /usr/share/groff/* ; 
+rm -rf /usr/share/info/* ;
+rm -rf /usr/share/lintian/* ;
+rm -rf /usr/share/linda/* ; 
+rm -rf /var/cache/man/* ;
 rm -rd /var/log/apt ;
 rm -rd /var/cache/apt ;
 apt clean ;
