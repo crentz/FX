@@ -101,11 +101,10 @@ rm -rd /var/cache/apt ;
 apt clean ;
 apt autoclean ;
 apt update ;
+cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
 cd ;
 rm -rf fx ;
-su fluxuan ;
-cd /etc/skel ;
-cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
+chown -R fluxuan:fluxuan /home/fluxuan/
 cd /home/fluxuan ;
 curl -LJO raw.githubusercontent.com/crentz/FX/main/badwolf.deb
 sudo apt install ./badwolf.deb ;
