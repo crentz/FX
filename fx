@@ -13,7 +13,9 @@ fi
 apt clean ;
 apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
-echo -e "Acquire::ForceIPv4 "true"/nAcquire::Languages "0"/nAPT::Install-Recommends "0"" >> /etc/apt/apt.conf ;
+echo "Acquire::ForceIPv4 \"true\" ;" >> /etc/apt/apt.conf ;
+echo "Acquire::Languages \"0\" ;" >> /etc/apt/apt.conf ;
+echo "APT::Install-Recommends \"0\" ;" >> /etc/apt/apt.conf ;
 apt update && apt upgrade -y ;
 apt install sudo \
 wget \
@@ -68,7 +70,10 @@ sed -i 's/Devuan/Fluxuan/' /etc/os-release ;
 sed -i 's/Devuan/Fluxuan/' /etc/default/grub ;
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/' /etc/default/grub ;
 sed -i 's/GRUB_THEME/#GRUB_THEME/' /etc/default/grub ;
-echo -e "vm.swappiness = 10/nvm.dirty_ratio = 40/nvm.dirty_background_ratio = 2/nvm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "vm.swappiness = 10" >>  /etc/sysctl.d/fluxuanctl.conf ;
+echo "vm.dirty_ratio = 40" >>  /etc/sysctl.d/fluxuanctl.conf ;
+echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
+echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/FX/main/fx.zip ;
@@ -83,7 +88,7 @@ rm -rf /boot/grub/splash.png ;
 cp /usr/share/fx/splash.png /boot/grub/ ;
 mv start.wav /usr/share/sounds/ ;
 cp /usr/share/fx/splash.png /usr/lib/refractasnapshot/iso/isolinux ;
-sed 's/*.current_theme.*/current_theme fxslim/' /etc/slim.conf ;
+sed -i 's/current_theme.*/current_theme fxslim/' /etc/slim.conf ;
 rm -rf fx.zip ;
 su fluxuan ;
 cd /etc/skel/ ;
