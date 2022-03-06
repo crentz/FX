@@ -15,7 +15,6 @@ apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
 echo "Acquire::ForceIPv4 \"true\" ;" >> /etc/apt/apt.conf ;
 echo "Acquire::Languages \"0\" ;" >> /etc/apt/apt.conf ;
-echo "APT::Install-Recommends \"0\" ;" >> /etc/apt/apt.conf ;
 apt update && apt upgrade -y ;
 apt install sudo \
 wget \
@@ -88,16 +87,8 @@ rm -rf /boot/grub/splash.png ;
 cp /usr/share/fx/splash.png /boot/grub/ ;
 mv start.wav /usr/share/sounds/ ;
 cp /usr/share/fx/splash.png /usr/lib/refractasnapshot/iso/isolinux ;
-sed -i 's/current_theme.*/current_theme fxslim/' /etc/slim.conf ;
+sed -i 's/current_theme.*/current_theme  fxslim/' /etc/slim.conf ;
 rm -rf fx.zip ;
-su fluxuan ;
-cd /etc/skel/ ;
-cp -R .config .fluxbox .wbar .gtkrc-2.0 .screenlayout /home/fluxuan/ ;
-cd /home/fluxuan/ ;
-curl -LJO raw.githubusercontent.com/crentz/FX/main/badwolf.deb
-sudo apt install ./badwolf.deb ;
-exit ;
-rm -rf fx ;
 rm -rf /usr/share/doc/* ; 
 rm -rf /usr/share/man/* ;
 rm -rf /usr/share/groff/* ; 
@@ -110,4 +101,15 @@ rm -rd /var/cache/apt ;
 apt clean ;
 apt autoclean ;
 apt update ;
+cd ;
+rm -rf fx ;
+su fluxuan ;
+cd /etc/skel ;
+cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
+cd /home/fluxuan ;
+curl -LJO raw.githubusercontent.com/crentz/FX/main/badwolf.deb
+sudo apt install ./badwolf.deb ;
+
 echo "Packages finished and installed succesfully. Enjoy !"
+echo "You Should login and use Bleachbit ! "
+echo "Thank you for your Patience ! "
