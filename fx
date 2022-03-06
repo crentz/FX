@@ -10,6 +10,8 @@ if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 
    exit 1
 fi
+apt clean ;
+apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
 echo -e "Acquire::ForceIPv4 "true"/nAcquire::Languages "0"/nAPT::Install-Recommends "0"" >> /etc/apt/apt.conf ;
 apt update && apt upgrade -y ;
@@ -102,4 +104,5 @@ rm -rd /var/log/apt ;
 rm -rd /var/cache/apt ;
 apt clean ;
 apt autoclean ;
+apt update ;
 echo "Packages finished and installed succesfully. Enjoy !"
