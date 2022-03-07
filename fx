@@ -77,6 +77,10 @@ chmod +x CCP Byef ;
 mv fxslim /usr/share/slim/themes ;
 mv CCP /usr/bin/ ;
 mv Byef /usr/bin/ ;
+touch /usr/bin/bbit ;
+echo "!#/bin/bash" >> /usr/bin/bbit ;
+echo "pkexec bleachbit" >> /usr/bin/bbit
+chmod +x /usr/bin/bbit ;
 mv wallpaper /usr/share/ ;
 mv Dark-f /usr/share/themes/ ;
 mv fx /usr/share/ ;
@@ -106,7 +110,9 @@ apt update ;
 cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
 cd ;
 rm -rf fx ;
-chown -R fluxuan:fluxuan /home/fluxuan/
+chown -R fluxuan:fluxuan /home/fluxuan/ ;
+cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
+sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 cd /home/fluxuan ;
 curl -LJO raw.githubusercontent.com/crentz/FX/main/badwolf.deb
 sudo apt install ./badwolf.deb ;
