@@ -30,20 +30,17 @@ sakura \
 viewnior \
 xpaint \
 xpdf \
-xarchiver \
 pcmanfm \
 udevil \
 gparted \
 synaptic \
 gufw \
-xfburn \
 alsa-utils \
 volumeicon-alsa \
 apulse \
 wbar \
 wbar-config \
 nitrogen \
-smplayer \
 yad \
 bleachbit \
 libwebkit2gtk-4.0-dev \
@@ -116,5 +113,5 @@ sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 cd /home/fluxuan ;
 curl -LJO raw.githubusercontent.com/crentz/FX/main/badwolf.deb
 sudo apt install ./badwolf.deb ;
-
+rm -rf badwolf.deb ;
 echo "Packages finished and installed succesfully. Enjoy !"
