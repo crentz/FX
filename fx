@@ -30,6 +30,7 @@ sakura \
 viewnior \
 xpaint \
 xpdf \
+smplayer \
 pcmanfm \
 udevil \
 gparted \
