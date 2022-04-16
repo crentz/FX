@@ -20,9 +20,9 @@ apt install sudo \
 wget \
 unzip \
 xserver-xorg \
+xinit \
 arandr \
 fluxbox \
-slim \
 featherpad \
 lxappearance \
 lxpolkit \
@@ -72,7 +72,7 @@ cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/FX/main/fx.zip ;
 unzip fx.zip ;
 chmod +x CCP Byef ;
-mv fxslim /usr/share/slim/themes ;
+rm -rf fxslim ;
 mv CCP /usr/bin/ ;
 mv Byef /usr/bin/ ;
 touch /usr/bin/bbit ;
@@ -105,6 +105,7 @@ rm -rd /var/cache/apt ;
 apt clean ;
 apt autoclean ;
 apt update ;
+echo "if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startx fi" >> /home/fluxuan/.profile ;
 cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
 cd ;
 rm -rf fx ;
