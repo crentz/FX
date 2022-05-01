@@ -23,7 +23,7 @@ xserver-xorg \
 xinit \
 arandr \
 fluxbox \
-mousepad \
+featherpad \
 lxappearance \
 lxpolkit \
 sakura \
@@ -46,8 +46,6 @@ yad \
 bleachbit \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
-firmware-b43-installer \
-firmware-b43legacy-installer \
 firmware-realtek \
 firmware-atheros \
 firmware-iwlwifi \
