@@ -108,7 +108,7 @@ chown -R fluxuan:fluxuan /home/fluxuan/ ;
 cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 cd /home/fluxuan ;
-if $(uname -a | grep 'armv7l'); then
+if [ uname -m | grep 'armv7l' ]; then
   curl -LJO https://github.com/minbrowser/min/releases/download/v1.24.0/min_1.24.0_armhf.deb
 else
   curl -LJO https://github.com/minbrowser/min/releases/download/v1.9.2/min_1.9.2_i386.deb
