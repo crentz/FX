@@ -15,6 +15,9 @@ apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
 echo "Acquire::ForceIPv4 \"true\" ;" >> /etc/apt/apt.conf ;
 echo "Acquire::Languages \"0\" ;" >> /etc/apt/apt.conf ;
+touch  /etc/dpkg/dpkg.cfg.d/excludes ;
+echo -e "path-exclude /usr/share/man/*\npath-exclude /usr/share/doc/*\npath-exclude /usr/share/doc-base/*\npath-exclude /usr/share/gtk-doc/*\npath-exclude /usr/share/help/*\npath-exclude /usr/share/info/*\npath-exclude /usr/share/man-db/*\npath-exclude /usr/share/groff/*\npath-exclude /usr/share/linda/*
+\npath-exclude /usr/share/lintian/*" >> /etc/dpkg/dpkg.cfg.d/excludes ;
 apt update && apt upgrade -y ;
 apt install sudo \
 wget \
@@ -110,9 +113,9 @@ cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 cd /home/fluxuan ;
 sed -i 's/badwolf/apulse midori/' /home/fluxuan/.wbar ;
-su fluxuan ;
-amixer set Master 86% && exit ;
+amixer set Master 86% ;
+amixer set Speaker 86% ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
 echo "The System is going down for reboot NOW !"  ;
-reboot
+
 
