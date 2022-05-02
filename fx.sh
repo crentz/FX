@@ -23,7 +23,7 @@ xserver-xorg \
 xinit \
 arandr \
 fluxbox \
-featherpad \
+mousepad \
 lxappearance \
 lxpolkit \
 sakura \
@@ -44,6 +44,7 @@ wbar-config \
 nitrogen \
 yad \
 bleachbit \
+midori \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-realtek \
@@ -108,4 +109,10 @@ chown -R fluxuan:fluxuan /home/fluxuan/ ;
 cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 cd /home/fluxuan ;
-echo "Packages finished and installed succesfully. Enjoy !"
+sed -i 's/badwolf/apulse midori/' /home/fluxuan/.wbar ;
+su fluxuan ;
+amixer set Master 86% && exit ;
+echo "Packages finished and installed succesfully. Enjoy !" ;
+echo "The System is going down for reboot NOW !"  ;
+reboot
+
