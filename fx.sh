@@ -54,6 +54,9 @@ firmware-realtek \
 firmware-atheros \
 firmware-iwlwifi \
 firmware-brcm80211 \
+firmware-ralink \
+firmware-b43-installer \
+firmware-b43legacy-installer \
 network-manager-gnome -y ;
 usermod -aG sudo fluxuan ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
