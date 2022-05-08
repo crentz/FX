@@ -10,9 +10,6 @@ if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 
    exit 1
 fi
-apt install dialog dbus -y ;
-dbus-uuidgen > /var/lib/dbus/machine-id ;
-apt install linux-image-686 live-boot -y ;
 apt clean ;
 apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
@@ -52,6 +49,7 @@ nitrogen \
 yad \
 bleachbit \
 midori \
+debian-installer-launcher \
 firmware-b43-installer \
 firmware-b43legacy-installer \
 firmware-linux-nonfree \
@@ -78,7 +76,7 @@ cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/FX/main/fx.zip ;
 unzip fx.zip ;
 echo "i: /usr/share/icons/nuoveXT2/128x128/actions/gtk-cdrom.png" >>  /etc/skel/.wbar ;
-echo "c: pkexec debian-installer-launcher" >>  /etc/skel/.wbar ;
+echo "c: pkexec sakura -e /usr/sbin/debian-installer-launcher" >>  /etc/skel/.wbar ;
 echo "t: Fluxuan Installer" >>  /etc/skel/.wbar ;
 sed -i 's/badwolf/apulse midori/' /etc/skel/.wbar ;
 chmod +x CCP Byef ;
@@ -117,7 +115,5 @@ cd ;
 rm -rf dfx ;
 cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
-rm /var/lib/dbus/machine-id && rm -rf /tmp/* ;
-umount /proc /sys /dev/pts ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
 echo "Adduser fluxuan / change root password / exit"
