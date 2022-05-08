@@ -10,6 +10,9 @@ if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 
    exit 1
 fi
+dbus-uuidgen > /var/lib/dbus/machine-id ;
+apt install dialog dbus -y ;
+apt install linux-image-686 live-boot -y ;
 apt clean ;
 apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
@@ -19,9 +22,6 @@ touch  /etc/dpkg/dpkg.cfg.d/excludes ;
 echo -e "path-exclude /usr/share/man/*\npath-exclude /usr/share/doc/*\npath-exclude /usr/share/doc-base/*\npath-exclude /usr/share/gtk-doc/*\npath-exclude /usr/share/help/*\npath-exclude /usr/share/info/*\npath-exclude /usr/share/man-db/*\npath-exclude /usr/share/groff/*\npath-exclude /usr/share/linda/*
 \npath-exclude /usr/share/lintian/*" >> /etc/dpkg/dpkg.cfg.d/excludes ;
 apt update && apt upgrade -y ;
-apt install dialog dbus -y ;
-dbus-uuidgen > /var/lib/dbus/machine-id ;
-apt install linux-image-686 live-boot -y ;
 apt install sudo \
 wget \
 unzip \
@@ -62,9 +62,6 @@ firmware-iwlwifi \
 firmware-brcm80211 \
 firmware-ralink \
 network-manager-gnome -y ;
-echo -e "fluxuan\nfluxuan" | passwd root ;
-useradd fluxuan; echo -e "fluxuan\nfluxuan" | passwd fluxuan
-usermod -aG sudo fluxuan ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
@@ -116,13 +113,11 @@ rm -rd /var/cache/apt ;
 apt clean ;
 apt autoclean ;
 apt update ;
-cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
-chown -R fluxuan:fluxuan /home/fluxuan/ ;
 cd ;
-rm -rf fx ;
+rm -rf dfx ;
 cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 rm /var/lib/dbus/machine-id && rm -rf /tmp/* ;
 umount /proc /sys /dev/pts ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
-echo "exit"  ;
+echo "Adduser fluxuan / change root password / exit"
