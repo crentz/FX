@@ -56,6 +56,8 @@ firmware-atheros \
 firmware-iwlwifi \
 firmware-brcm80211 \
 firmware-ralink \
+firmware-b43-installer \
+firmware-b43legacy-installer \
 refractasnapshot-base \
 refractainstaller-base \
 network-manager-gnome -y ;
@@ -86,6 +88,11 @@ mv wallpaper /usr/share/ ;
 mv Dark-f /usr/share/themes/ ;
 mv fx /usr/share/ ;
 rm -rf /boot/grub/splash.png ;
+cp /usr/share/fx/splash.png /usr/lib/refractasnapshot/iso/isolinux ;
+sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/' /etc/default/grub ;
+sed -i 's/GRUB_THEME/#GRUB_THEME/' /etc/default/grub ;
+sed -i 's/Devuan/Fluxuan/' /etc/default/grub ;
+sed -i 's/Debian/Fluxuan/' /etc/default/grub ;
 cp /usr/share/fx/splash.png /boot/grub/ ;
 update-grub ;
 mv start.wav /usr/share/sounds/ ;
@@ -103,7 +110,6 @@ rm -rf /usr/share/linda/* ;
 rm -rf /var/cache/man/* ;
 rm -rd /var/log/apt ;
 rm -rd /var/cache/apt ;
-cp /usr/share/fx/splash.png /usr/share/plymouth/themes/pix/ ;
 apt clean ;
 apt autoclean ;
 apt update ;
