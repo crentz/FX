@@ -72,7 +72,7 @@ echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
-curl -LJO raw.githubusercontent.com/crentz/FX/main/fx.zip ;
+curl -LJO raw.githubusercontent.com/crentz/fx/main/fx.zip ;
 unzip fx.zip ;
 chmod +x CCP Byef ;
 rm -rf fxslim ;
