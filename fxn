@@ -56,8 +56,8 @@ firmware-atheros \
 firmware-iwlwifi \
 firmware-brcm80211 \
 firmware-ralink \
-refracta-snapshot-base \
-refracta-installer-base \
+refractasnapshot-base \
+refractainstaller-base \
 network-manager-gnome -y ;
 usermod -aG sudo fluxuan ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
