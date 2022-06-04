@@ -47,8 +47,8 @@ wbar-config \
 nitrogen \
 yad \
 bleachbit \
-midori \
-lightdm-gtk-greeter \
+slim \
+xarchiver \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-realtek \
@@ -62,6 +62,7 @@ refractasnapshot-base \
 refractainstaller-base \
 network-manager-gnome -y ;
 usermod -aG sudo fluxuan ;
+apt install --no-install-recommends chromium chromium-sandbox ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
@@ -74,12 +75,16 @@ echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
-curl -LJO raw.githubusercontent.com/crentz/fx/main/fx.zip ;
-unzip fx.zip ;
-chmod +x CCP Byef ;
-rm -rf fxslim ;
+curl -LJO raw.githubusercontent.com/crentz/fx/main/fxn.zip ;
+unzip fxn.zip ;
+chmod +x CCP Byef fxw ;
+mv fxslim /usr/share/slim/themes/;
+sed -i 's/desktop-slim-theme/fxslim/' /etc/slim.conf ;
+sed -i 's/#default_user        simone/default_user fluxuan/' /etc/slim.conf ;
+sed -i 's/#auto_login          no/auto_login yes/' /etc/slim.conf ;
 mv CCP /usr/bin/ ;
 mv Byef /usr/bin/ ;
+mv fxw /usr/bin/ ;
 touch /usr/bin/bbit ;
 echo "!#/bin/bash" >> /usr/bin/bbit ;
 echo "pkexec bleachbit" >> /usr/bin/bbit
@@ -113,16 +118,11 @@ rm -rd /var/cache/apt ;
 apt clean ;
 apt autoclean ;
 apt update ;
-echo "i: /usr/share/icons/nuoveXT2/128x128/actions/gtk-cdrom.png" >>  /etc/skel/.wbar ;
-echo "c: pkexec refracta-installer" >>  /etc/skel/.wbar ;
-echo "t: Fluxuan Installer" >>  /etc/skel/.wbar ;
 cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
 cd ;
 rm -rf fxn ;
 cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
-cd /home/fluxuan ;
-sed -i 's/badwolf/apulse midori/' /home/fluxuan/.wbar ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
 echo "The System is going down for reboot NOW !"  ;
