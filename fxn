@@ -12,6 +12,9 @@ if [[ $EUID -ne 0 ]]; then
 fi
 apt clean ;
 apt autoclean ;
+apt remove --purge openssh-server mutt iamerican ibritish info ispell manpages vim-tiny vim-common w3m wamerican aspell bc dc dictionaries debian-faq
+debian-faq-de debian-faq-fr debian-faq-it debian-faq-zh-cn fdutils -y ;
+apt autoremove -y ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
 echo "Acquire::ForceIPv4 \"true\" ;" >> /etc/apt/apt.conf ;
 echo "Acquire::Languages \"0\" ;" >> /etc/apt/apt.conf ;
