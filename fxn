@@ -78,7 +78,7 @@ echo "vm.swappiness = 10" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_ratio = 40" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
-echo "fluxuan ALL = NOPASSWD: /usr/sbin/refractainstaller, /sbin/refractainstaller, /bin/refractainstaller" >> /etc/sudoers ;
+echo "fluxuan ALL = NOPASSWD: /usr/sbin/refractainstaller /sbin/refractainstaller /bin/refractainstaller" >> /etc/sudoers ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fxn.zip ;
