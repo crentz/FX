@@ -22,7 +22,8 @@ touch  /etc/dpkg/dpkg.cfg.d/excludes ;
 echo -e "path-exclude /usr/share/man/*\npath-exclude /usr/share/doc/*\npath-exclude /usr/share/doc-base/*\npath-exclude /usr/share/gtk-doc/*\npath-exclude /usr/share/help/*\npath-exclude /usr/share/info/*\npath-exclude /usr/share/man-db/*\npath-exclude /usr/share/groff/*\npath-exclude /usr/share/linda/*
 \npath-exclude /usr/share/lintian/*" >> /etc/dpkg/dpkg.cfg.d/excludes ;
 apt update && apt upgrade -y ;
-apt install sudo \
+apt install localepurge \
+sudo \
 wget \
 unzip \
 xserver-xorg \
@@ -63,6 +64,7 @@ firmware-b43-installer \
 firmware-b43legacy-installer \
 refractasnapshot-base \
 refractainstaller-base \
+refractainstaller-gui \
 network-manager-gnome -y ;
 usermod -aG sudo fluxuan ;
 apt install --no-install-recommends chromium chromium-sandbox -y ;
