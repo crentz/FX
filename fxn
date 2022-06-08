@@ -12,7 +12,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 apt clean ;
 apt autoclean ;
-apt remove --purge acpi openssh-server mutt iamerican ibritish info ispell manpages vim-tiny vim-common w3m wamerican aspell bc dc dictionaries debian-faq
+apt remove --purge openssh-server mutt iamerican ibritish info ispell manpages vim-tiny vim-common w3m wamerican aspell bc dc dictionaries debian-faq
 debian-faq-de debian-faq-fr debian-faq-it debian-faq-zh-cn fdutils -y ;
 apt autoremove -y ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
@@ -22,22 +22,20 @@ touch  /etc/dpkg/dpkg.cfg.d/excludes ;
 echo -e "path-exclude /usr/share/man/*\npath-exclude /usr/share/doc/*\npath-exclude /usr/share/doc-base/*\npath-exclude /usr/share/gtk-doc/*\npath-exclude /usr/share/help/*\npath-exclude /usr/share/info/*\npath-exclude /usr/share/man-db/*\npath-exclude /usr/share/groff/*\npath-exclude /usr/share/linda/*
 \npath-exclude /usr/share/lintian/*" >> /etc/dpkg/dpkg.cfg.d/excludes ;
 apt update && apt upgrade -y ;
-apt install localepurge \
-sudo \
+apt install sudo \
 wget \
 unzip \
 xserver-xorg \
 xinit \
 arandr \
 fluxbox \
-mousepad \
+featherpad \
 lxappearance \
 lxpolkit \
 sakura \
 viewnior \
 xpaint \
 xpdf \
-smplayer \
 pcmanfm \
 udevil \
 gparted \
@@ -62,9 +60,8 @@ firmware-brcm80211 \
 firmware-ralink \
 firmware-b43-installer \
 firmware-b43legacy-installer \
-refractasnapshot-base \
-refractainstaller-base \
-refractainstaller-gui \
+debian-installer \
+debian-installer-launcher \
 network-manager-gnome -y ;
 usermod -aG sudo fluxuan ;
 apt install --no-install-recommends chromium chromium-sandbox -y ;
@@ -99,7 +96,6 @@ mv wallpaper /usr/share/ ;
 mv Dark-f /usr/share/themes/ ;
 mv fx /usr/share/ ;
 rm -rf /boot/grub/splash.png ;
-cp /usr/share/fx/splash.png /usr/lib/refractasnapshot/iso/isolinux ;
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/' /etc/default/grub ;
 sed -i 's/GRUB_THEME/#GRUB_THEME/' /etc/default/grub ;
 sed -i 's/Devuan/Fluxuan/' /etc/default/grub ;
