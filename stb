@@ -2,7 +2,7 @@
 sudo apt-get install --assume-yes xorriso live-build syslinux squashfs-tools
 
 ##create basic system
-mkdir ~/liveee
+mkdir ~/livee
 debootstrap --arch=i386 --variant=minbase chimaera $HOME/livee/chroot
 
 ##chroot
