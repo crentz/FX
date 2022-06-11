@@ -60,7 +60,7 @@ firmware-b43legacy-installer \
 refractainstaller-gui \
 wicd -y ;
 usermod -aG sudo fluxuan ;
-apt install --no-install-recommends synaptic gparted gufw chromium chromium-sandbox -y ;
+apt install --no-install-recommends synaptic gparted gufw qutebrowser qutebrowser-qtwebengine -y ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
