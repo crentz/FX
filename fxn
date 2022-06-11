@@ -12,7 +12,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 apt clean ;
 apt autoclean ;
-apt remove --purge openssh-server mutt iamerican ibritish info ispell manpages vim-tiny vim-common w3m wamerican aspell bc dc dictionaries debian-faq
+apt remove --purge openssh-server vim-commoun vim-tiny mutt iamerican ibritish info ispell manpages vim-tiny vim-common w3m wamerican aspell bc dc dictionaries debian-faq
 debian-faq-de debian-faq-fr debian-faq-it debian-faq-zh-cn fdutils -y ;
 apt autoremove -y ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
@@ -38,9 +38,6 @@ xpaint \
 xpdf \
 pcmanfm \
 udevil \
-gparted \
-synaptic \
-gufw \
 alsa-utils \
 volumeicon-alsa \
 apulse \
@@ -60,11 +57,10 @@ firmware-brcm80211 \
 firmware-ralink \
 firmware-b43-installer \
 firmware-b43legacy-installer \
-debian-installer \
-debian-installer-launcher \
-network-manager-gnome -y ;
+refractainstaller-gui \
+wicd -y ;
 usermod -aG sudo fluxuan ;
-apt install --no-install-recommends chromium chromium-sandbox -y ;
+apt install --no-install-recommends synaptic gparted gufw chromium chromium-sandbox -y ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
@@ -103,7 +99,7 @@ sed -i 's/Debian/Fluxuan/' /etc/default/grub ;
 cp /usr/share/fx/splash.png /boot/grub/ ;
 update-grub ;
 mv start.wav /usr/share/sounds/ ;
-rm -rf fx.zip ;
+rm -rf fxn.zip ;
 rm -rf /usr/share/doc/* ;
 rm -rf /usr/share/doc-base/* ;
 rm -rf /usr/share/gtk-doc/* ;
@@ -127,4 +123,4 @@ cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
-echo "The System is going down for reboot NOW !"  ;
+
