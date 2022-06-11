@@ -58,7 +58,7 @@ firmware-ralink \
 firmware-b43-installer \
 firmware-b43legacy-installer \
 refractainstaller-gui \
-wicd -y ;
+network-manager-gnome -y ;
 usermod -aG sudo fluxuan ;
 apt install --no-install-recommends synaptic gparted gufw qutebrowser qutebrowser-qtwebengine -y ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
