@@ -1,0 +1,84 @@
+##needed packages
+apt-get install --assume-yes xorriso live-build syslinux squashfs-tools
+
+##create basic system
+mkdir ~/livework && cd ~/livework
+debootstrap --arch=i386 --variant=minbase chimaera $HOME/livee/chroot
+
+##chroot
+sudo chroot $HOME/livee/chroot
+mount none -t proc /proc
+mount none -t sysfs /sys
+mount none -t devpts /dev/pts
+export HOME=/root
+export LC_ALL=C
+export PS1="\e[01;31m(live):\W \$ \e[00m"
+
+##kernel and set password
+apt-get install --assume-yes dialog dbus --no-install-recommends
+dbus-uuidgen > /var/lib/dbus/machine-id
+apt-get install --assume-yes linux-image-686 live-boot --no-install-recommends
+passwd
+
+curl -LJO raw.githubusercontent.com/crentz/fx/main/fxn
+bash fxn
+
+##finished chroot
+apt-get clean
+rm /var/lib/dbus/machine-id && rm -rf /tmp/*
+umount /proc /sys /dev/pts
+exit
+
+##setup isolinux
+
+cd ~/livee
+sudo rm $HOME/livee/chroot/root/.bash_history
+sudo mkdir -p $HOME/livee/binary/live 
+sudo mkdir -p $HOME/livee/binary/isolinux
+sudo cp $HOME/livee/chroot/boot/vmlinuz-* $HOME/livee/binary/live/vmlinuz
+sudo cp $HOME/livee/chroot/boot/initrd.img-* $HOME/livee/binary/live/initrd
+sudo rm binary/live/filesystem.squashfs
+
+mksquashfs chroot $HOME/livee/binary/live/filesystem.squashfs -comp xz -Xbcj x86 -e boot
+cp /usr/lib/ISOLINUX/isolinux.bin "${HOME}/livee/binary/isolinux/"
+cp /usr/lib/syslinux/modules/bios/* "${HOME}/livee/binary/isolinux/"
+
+
+#####################################################################################################
+
+sample binary/isolinux/isolinux.cfg
+
+UI vesamenu.c32
+
+MENU TITLE Fluxuan Boot Menu
+DEFAULT linux
+TIMEOUT 600
+MENU RESOLUTION 640 480
+MENU COLOR border       30;44   #40ffffff #a0000000 std
+MENU COLOR title        1;36;44 #9033ccff #a0000000 std
+MENU COLOR sel          7;37;40 #e0ffffff #20ffffff all
+MENU COLOR unsel        37;44   #50ffffff #a0000000 std
+MENU COLOR help         37;40   #c0ffffff #a0000000 std
+MENU COLOR timeout_msg  37;40   #80ffffff #00000000 std
+MENU COLOR timeout      1;37;40 #c0ffffff #00000000 std
+MENU COLOR msg07        37;40   #90ffffff #a0000000 std
+MENU COLOR tabmsg       31;40   #30ffffff #00000000 std
+
+LABEL linux
+  MENU LABEL Fluxuan Linux
+  MENU DEFAULT
+  KERNEL /live/vmlinuz
+  APPEND initrd=/live/initrd boot=live persistence quiet
+
+LABEL linux
+  MENU LABEL Fluxuan Linux (failsafe)
+  MENU DEFAULT
+  KERNEL /live/vmlinuz
+  APPEND initrd=/live/initrd boot=live persistence config memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
+
+#######################################################################################
+
+
+## create iso
+cd ~/livework
+xorriso -as mkisofs -r -J -joliet-long -l -cache-inodes -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin -partition_offset 16 -A "Debian Live"  -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o my-debian.iso binary
