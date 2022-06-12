@@ -39,9 +39,9 @@ sudo cp $HOME/livee/chroot/boot/vmlinuz-* $HOME/livee/binary/live/vmlinuz
 sudo cp $HOME/livee/chroot/boot/initrd.img-* $HOME/livee/binary/live/initrd
 sudo rm binary/live/filesystem.squashfs
 
-mksquashfs chroot $HOME/livee/binary/live/filesystem.squashfs -comp xz -Xbcj x86 -e boot
-cp /usr/lib/ISOLINUX/isolinux.bin "${HOME}/livee/binary/isolinux/"
-cp /usr/lib/syslinux/modules/bios/* "${HOME}/livee/binary/isolinux/"
+sudo mksquashfs chroot $HOME/livee/binary/live/filesystem.squashfs -comp xz -Xbcj x86 -e boot 
+sudo cp /usr/lib/ISOLINUX/isolinux.bin "${HOME}/livee/binary/isolinux/"
+sudo cp /usr/lib/syslinux/modules/bios/* "${HOME}/livee/binary/isolinux/"
 
 
 #####################################################################################################
@@ -80,5 +80,5 @@ LABEL linux
 
 
 ## create iso
-cd ~/livework
-xorriso -as mkisofs -r -J -joliet-long -l -cache-inodes -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin -partition_offset 16 -A "Debian Live"  -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o my-debian.iso binary
+cd ~/livee
+sudo xorriso -as mkisofs -r -J -joliet-long -l -cache-inodes -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin -partition_offset 16 -A "Fluxuan Linux"  -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o Fluxuan-linux.iso binary
