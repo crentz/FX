@@ -12,7 +12,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 apt clean ;
 apt autoclean ;
-apt remove --purge openssh-server vim-commoun vim-tiny mutt iamerican ibritish info ispell manpages vim-tiny vim-common w3m wamerican aspell bc dc dictionaries debian-faq
+apt remove --purge openssh-server vim-common vim-tiny mutt iamerican ibritish info ispell manpages vim-tiny vim-common w3m wamerican aspell bc dc dictionaries debian-faq
 debian-faq-de debian-faq-fr debian-faq-it debian-faq-zh-cn fdutils -y ;
 apt autoremove -y ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
@@ -22,45 +22,9 @@ touch  /etc/dpkg/dpkg.cfg.d/excludes ;
 echo -e "path-exclude /usr/share/man/*\npath-exclude /usr/share/doc/*\npath-exclude /usr/share/doc-base/*\npath-exclude /usr/share/gtk-doc/*\npath-exclude /usr/share/help/*\npath-exclude /usr/share/info/*\npath-exclude /usr/share/man-db/*\npath-exclude /usr/share/groff/*\npath-exclude /usr/share/linda/*
 \npath-exclude /usr/share/lintian/*" >> /etc/dpkg/dpkg.cfg.d/excludes ;
 apt update && apt upgrade -y ;
-apt install sudo \
-wget \
-unzip \
-xserver-xorg \
-xinit \
-arandr \
-fluxbox \
-featherpad \
-lxappearance \
-lxpolkit \
-sakura \
-viewnior \
-xpaint \
-xpdf \
-pcmanfm \
-udevil \
-alsa-utils \
-volumeicon-alsa \
-apulse \
-wbar \
-wbar-config \
-nitrogen \
-yad \
-bleachbit \
-slim \
-xarchiver \
-firmware-linux-nonfree \
-firmware-misc-nonfree \
-firmware-realtek \
-firmware-atheros \
-firmware-iwlwifi \
-firmware-brcm80211 \
-firmware-ralink \
-firmware-b43-installer \
-firmware-b43legacy-installer \
-refractainstaller-gui \
-network-manager-gnome -y ;
+apt install sudo wget unzip xserver-xorg xinit arandr fluxbox lxpolkit pcmanfm udevil alsa-utils volumeicon-alsa apulse wbar wbar-config yad slim xarchiver firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-ralink firmware-b43-installer firmware-b43legacy-installer refractainstaller-gui network-manager-gnome -y ;
 usermod -aG sudo fluxuan ;
-apt install --no-install-recommends synaptic gparted gufw qutebrowser qutebrowser-qtwebengine -y ;
+apt install --no-install-recommends synaptic gparted gufw featherpad lxappearance viewnior sakura xpaint xpdf falkon nitrogen bleachbit xarchiver -y ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
@@ -71,7 +35,7 @@ echo "vm.swappiness = 10" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_ratio = 40" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
-echo "fluxuan ALL = NOPASSWD: /usr/sbin/refractainstaller /sbin/refractainstaller /bin/refractainstaller" >> /etc/sudoers ;
+echo "fluxuan ALL=(ALL:ALL) NOPASSWD: /usr/sbin/refractainstaller-wrapper.sh" >> /etc/sudoers ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fxn.zip ;
@@ -107,10 +71,10 @@ rm -rf /usr/share/gtk-doc/* ;
 rm -rf /usr/share/help/* ;
 rm -rf /usr/share/man-db/* ;
 rm -rf /usr/share/man/* ;
-rm -rf /usr/share/groff/* ; 
+rm -rf /usr/share/groff/* ;
 rm -rf /usr/share/info/* ;
 rm -rf /usr/share/lintian/* ;
-rm -rf /usr/share/linda/* ; 
+rm -rf /usr/share/linda/* ;
 rm -rf /var/cache/man/* ;
 rm -rd /var/log/apt ;
 rm -rd /var/cache/apt ;
@@ -124,4 +88,3 @@ cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
-
