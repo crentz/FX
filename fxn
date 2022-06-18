@@ -24,7 +24,7 @@ echo -e "path-exclude /usr/share/man/*\npath-exclude /usr/share/doc/*\npath-excl
 apt update && apt upgrade -y ;
 apt install sudo wget unzip xserver-xorg xinit arandr fluxbox lxpolkit pcmanfm udevil alsa-utils xcompmgr volumeicon-alsa apulse wbar wbar-config yad slim xarchiver firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-ralink firmware-b43-installer firmware-b43legacy-installer refractainstaller-gui network-manager-gnome -y ;
 usermod -aG sudo fluxuan ;
-apt install --no-install-recommends synaptic gparted gufw featherpad lxappearance viewnior sakura xpaint xpdf falkon nitrogen bleachbit xarchiver -y ;
+apt install --no-install-recommends synaptic gparted gufw featherpad lxappearance viewnior sakura xpaint scrot xpdf falkon nitrogen bleachbit xarchiver -y ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
@@ -54,7 +54,7 @@ echo "!#/bin/bash" >> /usr/bin/bbit ;
 echo "pkexec bleachbit" >> /usr/bin/bbit
 chmod +x /usr/bin/bbit ;
 mv wallpaper /usr/share/ ;
-mv Dark-f /usr/share/themes/ ;
+mv DarkArte /usr/share/themes/ ;
 mv fx /usr/share/ ;
 rm -rf /boot/grub/splash.png ;
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/' /etc/default/grub ;
@@ -87,4 +87,5 @@ rm -rf fxn ;
 cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
+apt remove --purge feh -y ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
