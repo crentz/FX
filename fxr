@@ -138,7 +138,7 @@ apt autoclean ;
 apt update ;
 cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
 cd ;
-rm -rf fxn ;
+rm -rf fxr ;
 cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
