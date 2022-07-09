@@ -44,7 +44,7 @@ echo -e "path-exclude /usr/share/man/*\npath-exclude /usr/share/doc/*\npath-excl
 apt update && apt upgrade -y ;
 apt install sudo wget unzip xserver-xorg xinit arandr fluxbox lxpolkit pcmanfm udevil alsa-utils xcompmgr volumeicon-alsa apulse wbar wbar-config yad slim xarchiver firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-ralink firmware-b43-installer firmware-b43legacy-installer refractainstaller-gui network-manager-gnome -y ;
 usermod -aG sudo fluxuan ;
-apt install --no-install-recommends synaptic gparted gufw featherpad lxappearance viewnior sakura xpaint scrot xpdf falkon nitrogen bleachbit xarchiver -y ;
+apt install --no-install-recommends synaptic gparted gufw featherpad lxappearance viewnior sakura xpaint scrot xpdf firefox-esr nitrogen bleachbit xarchiver -y ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
