@@ -12,8 +12,28 @@ if [[ $EUID -ne 0 ]]; then
 fi
 apt clean ;
 apt autoclean ;
-apt remove --purge openssh-server vim-common vim-tiny mutt iamerican ibritish info ispell manpages vim-tiny vim-common w3m wamerican aspell bc dc dictionaries debian-faq
-debian-faq-de debian-faq-fr debian-faq-it debian-faq-zh-cn fdutils -y ;
+apt remove --purge openssh-server \
+vim-common \
+vim-tiny \
+mutt \
+iamerican \
+ibritish \
+info \
+ispell \
+manpages \
+vim-tiny \
+vim-common \
+w3m \
+wamerican \
+aspell \
+bc \
+dc \
+debian-faq \
+debian-faq-de \
+debian-faq-fr \
+debian-faq-it \
+debian-faq-zh-cn \
+fdutils -y ;
 apt autoremove -y ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
 echo "Acquire::ForceIPv4 \"true\" ;" >> /etc/apt/apt.conf ;
@@ -51,7 +71,8 @@ mv Byef /usr/bin/ ;
 mv fxw /usr/bin/ ;
 touch /usr/bin/bbit ;
 echo "!#/bin/bash" >> /usr/bin/bbit ;
-echo "pkexec bleachbit" >> /usr/bin/bbit
+echo "pkexec bleachbit" >> /usr/bin/bbit ;
+echo "- /usr/bin/fxw" >> /usr/lib/refractainstaller/installer_exclude.list ;
 chmod +x /usr/bin/bbit ;
 mv wallpaper /usr/share/ ;
 mv DarkArte /usr/share/themes/ ;
@@ -87,5 +108,4 @@ rm -rf fxn ;
 cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
 sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
-apt remove --purge feh -y ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
