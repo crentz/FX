@@ -52,7 +52,7 @@ fluxbox \
 lxpolkit \
 pcmanfm \
 udevil \
-alsa-utils 
+alsa-utils \
 xcompmgr \
 volumeicon-alsa \
 apulse \
@@ -60,14 +60,13 @@ wbar \
 wbar-config \
 yad \
 slim \
-xarchiver \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-realtek \
 firmware-atheros \
 firmware-iwlwifi \
 firmware-brcm80211 \
-firmware-ralink \
+firmware-amd-graphics \
 firmware-b43-installer \
 firmware-b43legacy-installer \
 refractainstaller-gui \
@@ -85,7 +84,6 @@ scrot \
 xpdf \
 firefox-esr \
 nitrogen \
-bleachbit \
 mate-power-manager \
 xarchiver -y ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
@@ -98,7 +96,6 @@ echo "vm.swappiness = 10" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_ratio = 40" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
-echo "fluxuan ALL=(ALL:ALL) NOPASSWD: /usr/sbin/refractainstaller-wrapper.sh /usr/bin/refractainstaller-yad" >> /etc/sudoers ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fxn.zip ;
@@ -112,11 +109,6 @@ mv kyb /usr/bin/ ;
 mv CCP /usr/bin/ ;
 mv Byef /usr/bin/ ;
 mv fxw /usr/bin/ ;
-touch /usr/bin/bbit ;
-echo "!#/bin/bash" >> /usr/bin/bbit ;
-echo "pkexec bleachbit" >> /usr/bin/bbit ;
-echo "- /usr/bin/fxw" >> /usr/lib/refractainstaller/installer_exclude.list ;
-chmod +x /usr/bin/bbit ;
 mv wallpaper /usr/share/ ;
 mv Mythos /usr/share/themes/ ;
 mv Gruvbox /usr/share/icons/ ;
@@ -149,8 +141,6 @@ apt update ;
 cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
 cd ;
 rm -rf fxn ;
-cp /usr/share/applications/bleachbit-root.desktop /usr/share/fx/system/ ;
-sed -i 's/pkexec bleachbit/bbit/' /usr/share/fx/system/bleachbit-root.desktop ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
 clear ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
