@@ -7,40 +7,13 @@
 
 
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
-   exit 1
+   : #do nothing
+   else
+   echo fluxuan |su - --stdin bash -c
 fi
 apt clean ;
 apt autoclean ;
-apt remove --purge openssh-server \
-vim-common \
-vim-tiny \
-mutt \
-iamerican \
-ibritish \
-info \
-ispell \
-manpages \
-vim-tiny \
-vim-common \
-w3m \
-wamerican \
-aspell \
-bc \
-dc \
-debian-faq \
-debian-faq-de \
-debian-faq-fr \
-debian-faq-it \
-debian-faq-zh-cn \
-fdutils -y ;
-apt autoremove -y ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
-echo "Acquire::ForceIPv4 \"true\" ;" >> /etc/apt/apt.conf ;
-echo "Acquire::Languages \"0\" ;" >> /etc/apt/apt.conf ;
-touch  /etc/dpkg/dpkg.cfg.d/excludes ;
-echo -e "path-exclude /usr/share/man/*\npath-exclude /usr/share/doc/*\npath-exclude /usr/share/doc-base/*\npath-exclude /usr/share/gtk-doc/*\npath-exclude /usr/share/help/*\npath-exclude /usr/share/info/*\npath-exclude /usr/share/man-db/*\npath-exclude /usr/share/groff/*\npath-exclude /usr/share/linda/*
-\npath-exclude /usr/share/lintian/*" >> /etc/dpkg/dpkg.cfg.d/excludes ;
 apt update && apt upgrade -y ;
 apt install sudo \
 wget \
@@ -55,7 +28,7 @@ udevil \
 alsa-utils \
 xcompmgr \
 volumeicon-alsa \
-apulse \
+pulseaudio \
 wbar \
 wbar-config \
 yad \
@@ -69,8 +42,7 @@ firmware-brcm80211 \
 firmware-amd-graphics \
 firmware-b43-installer \
 firmware-b43legacy-installer \
-refractainstaller-gui \
-network-manager-gnome -y ;
+network-manager-gnome -y -qq ;
 usermod -aG sudo fluxuan ;
 apt install --no-install-recommends synaptic \
 gparted \
@@ -85,7 +57,7 @@ xpdf \
 firefox-esr \
 nitrogen \
 mate-power-manager \
-xarchiver -y ;
+xarchiver -y -qq ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
@@ -98,8 +70,8 @@ echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
-curl -LJO raw.githubusercontent.com/crentz/fx/main/fxn.zip ;
-unzip fxn.zip ;
+curl -LJO raw.githubusercontent.com/crentz/fx/main/fxi.tar.xz ;
+tar -xf fxi.tar.xz ;
 chmod +x CCP Byef fxw kyb ;
 mv fxslim /usr/share/slim/themes/;
 sed -i 's/desktop-slim-theme/fxslim/' /etc/slim.conf ;
@@ -121,20 +93,6 @@ sed -i 's/Debian/Fluxuan/' /etc/default/grub ;
 cp /usr/share/fx/splash.png /boot/grub/ ;
 update-grub ;
 mv start.wav /usr/share/sounds/ ;
-rm -rf fxn.zip ;
-rm -rf /usr/share/doc/* ;
-rm -rf /usr/share/doc-base/* ;
-rm -rf /usr/share/gtk-doc/* ;
-rm -rf /usr/share/help/* ;
-rm -rf /usr/share/man-db/* ;
-rm -rf /usr/share/man/* ;
-rm -rf /usr/share/groff/* ;
-rm -rf /usr/share/info/* ;
-rm -rf /usr/share/lintian/* ;
-rm -rf /usr/share/linda/* ;
-rm -rf /var/cache/man/* ;
-rm -rd /var/log/apt ;
-rm -rd /var/cache/apt ;
 apt clean ;
 apt autoclean ;
 apt update ;
@@ -149,4 +107,3 @@ echo "####################################################" ;
 echo "!!!!!!!!!!SYSTEM IS GOING DOWN FOR REBOOT!!!!!!!!!!!" ;
 echo "####################################################" ;
 echo "####################################################" ;
-reboot
