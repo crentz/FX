@@ -25,6 +25,7 @@ volumeicon-alsa \
 pulseaudio \
 yad \
 slim \
+rofi \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-realtek \
@@ -62,6 +63,11 @@ echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
+if [ `uname -m` = "x86_64" ]; then
+    curl -LJO raw.githubusercontent.com/crentz/fx/main/wbar-fx-amd64.deb && apt install ./wbar-fx-amd64.deb -y -qq && rm -rf wbar-fx-amd64.deb
+else
+    Acurl -LJO raw.githubusercontent.com/crentz/fx/main/wbar-fx-i386.deb && apt install ./wbar-fx-i386.deb -y -qq && rm -rf wbar-fx-i386.deb
+fi
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fxi.tar.xz ;
 tar -xf fxi.tar.xz ;
 rm -rf fxi.tar.xz ;
