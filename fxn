@@ -4,23 +4,17 @@
 ############################
 #     Packages to Install
 ############################
-
-
-if [[ $EUID -ne 0 ]]; then
-   : #do nothing
-   else
-   echo fluxuan |su - --stdin bash -c
-fi
+echo "Cleaning and installing needed packages, please wait.... !!!!" ;
 apt clean ;
 apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
-apt update && apt upgrade -y ;
+apt update && apt upgrade -y -qq >/dev/null ;
 apt install sudo \
+xz-utils \
 wget \
 unzip \
 xserver-xorg \
 xinit \
-arandr \
 fluxbox \
 lxpolkit \
 pcmanfm \
@@ -29,8 +23,6 @@ alsa-utils \
 xcompmgr \
 volumeicon-alsa \
 pulseaudio \
-wbar \
-wbar-config \
 yad \
 slim \
 firmware-linux-nonfree \
@@ -42,7 +34,7 @@ firmware-brcm80211 \
 firmware-amd-graphics \
 firmware-b43-installer \
 firmware-b43legacy-installer \
-network-manager-gnome -y -qq ;
+network-manager-gnome -y -qq >/dev/null ;
 usermod -aG sudo fluxuan ;
 apt install --no-install-recommends synaptic \
 gparted \
@@ -57,7 +49,7 @@ xpdf \
 firefox-esr \
 nitrogen \
 mate-power-manager \
-xarchiver -y -qq ;
+xarchiver -y -qq >/dev/null ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
@@ -72,12 +64,13 @@ rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fxi.tar.xz ;
 tar -xf fxi.tar.xz ;
-chmod +x CCP Byef fxw kyb ;
+rm -rf fxi.tar.xz ;
+chmod +x CCP Byef fxw fbscreensize ;
 mv fxslim /usr/share/slim/themes/;
 sed -i 's/desktop-slim-theme/fxslim/' /etc/slim.conf ;
 sed -i 's/#default_user        simone/default_user fluxuan/' /etc/slim.conf ;
 sed -i 's/#auto_login          no/auto_login yes/' /etc/slim.conf ;
-mv kyb /usr/bin/ ;
+mv fbscreensize /usr/bin/ ;
 mv CCP /usr/bin/ ;
 mv Byef /usr/bin/ ;
 mv fxw /usr/bin/ ;
@@ -100,10 +93,6 @@ cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
 cd ;
 rm -rf fxn ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
-clear ;
+echo "####################################################" ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
-echo "####################################################" ;
-echo "####################################################" ;
-echo "!!!!!!!!!!SYSTEM IS GOING DOWN FOR REBOOT!!!!!!!!!!!" ;
-echo "####################################################" ;
 echo "####################################################" ;
