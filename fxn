@@ -84,6 +84,7 @@ mv fxw /usr/bin/ ;
 mv wallpaper /usr/share/ ;
 mv Mythos /usr/share/themes/ ;
 mv Gruvbox /usr/share/icons/ ;
+mv 40-libinput.conf /etc/X11/xorg.conf.d/ ;
 mv fx /usr/share/ ;
 rm -rf /boot/grub/splash.png ;
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/' /etc/default/grub ;
