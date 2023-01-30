@@ -8,7 +8,7 @@ echo "Cleaning and installing needed packages, please wait.... !!!!" ;
 apt clean ;
 apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
-apt update && apt upgrade -y -qq >/dev/null ;
+apt update && apt upgrade -y -qq ;
 apt install sudo \
 xz-utils \
 wget \
@@ -19,15 +19,14 @@ fluxbox \
 lxpolkit \
 pcmanfm \
 udevil \
-alsa-utils \
 xcompmgr \
 wbar \
 wbar-config \
 volumeicon-alsa \
 pulseaudio \
+pavucontrol \
 yad \
 slim \
-rofi \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-realtek \
@@ -52,7 +51,7 @@ xpdf \
 firefox-esr \
 nitrogen \
 mate-power-manager \
-xarchiver -y -qq >/dev/null ;
+xarchiver -y -qq ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
@@ -97,7 +96,7 @@ mv start.wav /usr/share/sounds/ ;
 apt clean ;
 apt autoclean ;
 apt update ;
-cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 .screenlayout/ /home/fluxuan/ ;
+cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 /home/fluxuan/ ;
 cd ;
 rm -rf fxn ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
