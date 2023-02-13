@@ -20,8 +20,7 @@ lxpolkit \
 pcmanfm \
 udevil \
 xcompmgr \
-wbar \
-wbar-config \
+plank \
 volumeicon-alsa \
 pulseaudio \
 pavucontrol \
@@ -66,25 +65,27 @@ echo "vm.swappiness = 10" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_ratio = 40" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
+touch /etc/apt/apt.conf.d/80updatehook ;
+echo "DPkg::Post-Invoke {"/usr/bin/fxmenuupdate";};" >> /etc/apt/apt.conf.d/80updatehook ;
 rm -rf /usr/share/desktop-base ;
 cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fxi.tar.xz ;
 tar -xf fxi.tar.xz ;
 rm -rf fxi.tar.xz ;
-chmod +x CCP Byef fxw fbscreensize ;
+chmod +x Byef fxw fbscreensize fxmenuupdate ;
 mv fxslim /usr/share/slim/themes/;
 sed -i 's/desktop-slim-theme/fxslim/' /etc/slim.conf ;
 sed -i 's/#default_user        simone/default_user fluxuan/' /etc/slim.conf ;
 sed -i 's/#auto_login          no/auto_login yes/' /etc/slim.conf ;
 mv fbscreensize /usr/bin/ ;
-mv CCP /usr/bin/ ;
+mv fxmenuupdate /usr/bin/ ;
 mv Byef /usr/bin/ ;
 mv fxw /usr/bin/ ;
-mv wallpaper /usr/share/ ;
 mv Mythos /usr/share/themes/ ;
 mv Gruvbox /usr/share/icons/ ;
 mv 40-libinput.conf /etc/X11/xorg.conf.d/ ;
 mv fx /usr/share/ ;
+mv 8flow /usr/share/plank/themes/ ;
 rm -rf /boot/grub/splash.png ;
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=3/' /etc/default/grub ;
 sed -i 's/GRUB_THEME/#GRUB_THEME/' /etc/default/grub ;
@@ -96,7 +97,7 @@ mv start.wav /usr/share/sounds/ ;
 apt clean ;
 apt autoclean ;
 apt update ;
-cp -R .config/ .fluxbox/ .wbar .gtkrc-2.0 /home/fluxuan/ ;
+cp -R .config/ .fluxbox/ .mozilla/ .gtkrc-2.0 .fehbg .profile .bashrc /home/fluxuan/ ;
 cd ;
 rm -rf fxn ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
