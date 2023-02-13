@@ -97,7 +97,7 @@ mv start.wav /usr/share/sounds/ ;
 apt clean ;
 apt autoclean ;
 apt update ;
-cp -R .config/ .fluxbox/ .mozilla/ .gtkrc-2.0 .fehbg .profile .bashrc /home/fluxuan/ ;
+cp -R .config/ .fluxbox/ .gtkrc-2.0 .fehbg .profile .bashrc /home/fluxuan/ ;
 cd ;
 rm -rf fxn ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
