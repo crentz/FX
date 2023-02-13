@@ -1,0 +1,222 @@
+
+
+
+/* S E T T I N G S */
+
+:root {
+  --navbarWidth     : 33vw; /* Set width of navbar. Use px for a fixed width 
+                                or vw for a percentage of your window. */
+  --animationSpeed  : 0.15s;
+}
+
+
+
+/* Hide back button only when disabled */
+#back-button[disabled="false"] { display: none !important }
+
+/* Hide forward button only when disabled */
+#forward-button[disabled="false"] { display: none !important }
+
+/* "Shield" icon */
+#tracking-protection-icon-container { display: none !important }
+
+/* Site information button */
+#identity-box { display: none !important }
+
+
+
+/* Oneline tweak */
+
+#TabsToolbar {
+  margin-left : var(--navbarWidth) !important;
+}
+#TabsToolbar {
+  margin-top: 1px;
+}
+#TabsToolbar { background: #141c21 !important; }
+#PersonalToolbar {
+    -moz-box-ordinal-group: 2 !important;
+    padding-top: 1px !important;
+}
+#PersonalToolbar { background: #141c21 !important; }
+#PersonalToolbar .toolbarbutton-text { color: white !important; }
+#nav-bar {
+  margin-right: calc(100vw - var(--navbarWidth)) !important;
+}
+#PanelUI-button {
+	display: block !important;
+	position: fixed !important;
+	right: 0px !important; /*close/max/min placement*/
+	padding-top: 4px !important;
+}
+#alltabs-button {
+	position: fixed !important;
+	left: -1px !important;
+	padding-right: 28px !important; /*close/max/min placement*/
+}
+
+#urlbar-container {
+  min-width   : 150px !important;
+}
+
+:root[uidensity="compact"] #nav-bar {
+  margin-top  : -37px !important;
+  height      : 37px !important;
+}
+
+:root:not([uidensity="compact"]):not([uidensity="touch"]) #nav-bar {
+  margin-top  : -44px !important;
+  height      : 44px !important;
+}
+
+:root[uidensity="touch"] #nav-bar {
+  margin-top  : -49px !important;
+  height      : 49px !important;
+}
+
+
+/* Dragging space */
+:root[sizemode="maximized"] #TabsToolbar {
+  margin-top: 1px;
+}
+
+:root{
+  --uc-autohide-toolbox-delay: 500ms; /* Wait 0.1s before hiding toolbars */
+  --uc-toolbox-rotation: 82deg;  /* This may need to be lower on mac - like 75 or so */
+}
+
+:root[sizemode="maximized"]{
+  --uc-toolbox-rotation: 88.5deg;
+}
+
+@media  (-moz-platform: windows),
+        (-moz-os-version: windows-win7),
+        (-moz-os-version: windows-win10){
+
+  #navigator-toolbox:not(:-moz-lwtheme){ background-color: -moz-dialog !important; }
+}
+
+:root[sizemode="fullscreen"],
+#navigator-toolbox[inFullscreen]{ margin-top: 0 !important; }
+
+#navigator-toolbox{
+  position: fixed !important;
+  display: block;
+  background-color: var(--lwt-accent-color,black) !important;
+  transition: transform 82ms linear, opacity 82ms linear !important;
+  transition-delay: var(--uc-autohide-toolbox-delay) !important;
+  transform-origin: top;
+  transform: rotateX(var(--uc-toolbox-rotation));
+  opacity: 0;
+  line-height: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+/* #mainPopupSet:hover ~ box > toolbox, */
+/* Uncomment the above line to make toolbar visible if some popup is hovered */
+#navigator-toolbox:hover,
+#navigator-toolbox:focus-within{
+  transition-delay: 53ms !important;
+  transform: rotateX(0);
+  opacity: 1;
+}
+
+#navigator-toolbox > *{ line-height: normal; pointer-events: auto }
+
+#navigator-toolbox,
+#navigator-toolbox > *{
+  width: 100vw;
+  -moz-appearance: none !important;
+}
+
+/* These two exist for oneliner compatibility */
+#nav-bar{ width: var(--uc-navigationbar-width,33vw) }
+#TabsToolbar{ width: calc(100vw - var(--uc-navigationbar-width,0px)) }
+
+/* Don't apply transform before window has been fully created */
+:root:not([sessionrestored]) #navigator-toolbox{ transform:none !important }
+
+:root[customizing] #navigator-toolbox{
+  position: relative !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+#navigator-toolbox[inFullscreen] > #PersonalToolbar,
+#PersonalToolbar[collapsed="true"]{ display: none }
+
+/* Uncomment this if tabs toolbar is hidden with hide_tabs_toolbar.css */
+ /*#titlebar{ margin-bottom: -9px }*/
+
+/* Uncomment the following for compatibility with tabs_on_bottom.css - this isn't well tested though */
+/*
+#navigator-toolbox{ flex-direction: column; display: flex; }
+#titlebar{ order: 2 }
+*/
+
+
+
+/* Simplifying interface */
+
+#nav-bar {
+  background  : #141c21 !important;
+  box-shadow  : none !important;
+}
+
+#navigator-toolbox {
+  border      : none !important;
+}
+
+.titlebar-spacer {
+  display     : none !important;
+}
+
+#urlbar-background {
+  border      : none !important;
+}
+
+#urlbar:not(:hover):not([breakout][breakout-extend]) > #urlbar-background {
+  box-shadow  : none !important;
+  background  : none !important;
+}
+
+
+/* Hide urlbar elements when not active */
+
+.urlbar-icon, #userContext-indicator, #userContext-label {
+  fill        : transparent !important;
+  background  : transparent !important;
+  color       : transparent !important;
+}
+
+#urlbar:hover .urlbar-icon,
+#urlbar:active .urlbar-icon, 
+#urlbar[focused] .urlbar-icon {
+  fill        : var(--toolbar-color) !important;
+}
+
+
+
+/* animations */
+.subviewbutton,
+#urlbar-background,
+.urlbar-icon,
+#userContext-indicator,
+#userContext-label,
+.urlbar-input-box, 
+#identity-box,
+#tracking-protection-icon-container,
+[anonid=urlbar-go-button],
+.urlbar-icon-wrapper,
+#tracking-protection-icon,
+#identity-box image,
+stack,
+tab:not(:active) .tab-background,
+tab:not([beforeselected-visible])::after,
+tab[visuallyselected] .tab-background::before,
+tab[visuallyselected] .tab-background::before,
+.tab-close-button {
+  transition  : var(--animationSpeed) !important;
+}
