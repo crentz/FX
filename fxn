@@ -35,7 +35,7 @@ firmware-brcm80211 \
 firmware-amd-graphics \
 firmware-b43-installer \
 firmware-b43legacy-installer \
-network-manager-gnome -y -qq >/dev/null ;
+network-manager-gnome -y -qq ;
 usermod -aG sudo fluxuan ;
 apt install --no-install-recommends synaptic \
 gparted \
