@@ -8,8 +8,8 @@ echo "Cleaning and installing needed packages, please wait.... !!!!" ;
 apt clean ;
 apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
-apt update && apt upgrade -y -qq ;
-apt install sudo \
+apt-get update && apt-get upgrade -y -qq ;
+apt-get install sudo \
 xz-utils \
 wget \
 unzip \
@@ -24,7 +24,7 @@ plank \
 volumeicon-alsa \
 pulseaudio \
 pavucontrol \
-yad \
+vlc \
 slim \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
@@ -35,9 +35,8 @@ firmware-brcm80211 \
 firmware-amd-graphics \
 firmware-b43-installer \
 firmware-b43legacy-installer \
-network-manager-gnome -y -qq ;
-usermod -aG sudo fluxuan ;
-apt install --no-install-recommends synaptic \
+network-manager-gnome -y -qq >/dev/null ;
+apt-get install --no-install-recommends synaptic \
 gparted \
 gufw \
 featherpad \
@@ -48,9 +47,9 @@ xpaint \
 scrot \
 xpdf \
 firefox-esr \
-nitrogen \
 mate-power-manager \
-xarchiver -y -qq ;
+xarchiver -y -qq >/dev/null ;
+usermod -aG sudo fluxuan ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
