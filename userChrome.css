@@ -29,9 +29,6 @@
 
 /* Oneline tweak */
 
-.tab-background[selected="true"] {
-      background-color: turquoz !important;
-    }
 .tab-background[selected="false"] {
       background-color: white !important;
     }
