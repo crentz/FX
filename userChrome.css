@@ -1,9 +1,9 @@
-//* Fluxuan Linux One-Bar Theme *//
-//* All rights reserved *//
-//* You can use and modify this theme however you want but don`t remove this banner. *//
-//* https://fluxuan.org  -  https://forums.fluxuan.org *//
+/* Fluxuan Linux One-Bar Theme */
+/* All rights reserved */
+/* You can use and modify this theme however you want but don`t remove this banner. */
+/* https://fluxuan.org  -  https://forums.fluxuan.org */
 
-/* S E T T I N G S */
+
 
 :root {
   --navbarWidth     : 33vw; /* Set width of navbar. Use px for a fixed width 
@@ -29,21 +29,31 @@
 
 /* Oneline tweak */
 
-#TabsToolbar {
+.tab-background[selected="true"] {
+      background-color: turquoz !important;
+    }
+.tab-background[selected="false"] {
+      background-color: white !important;
+    }
+
+toolbar#TabsToolbar {
   margin-left : var(--navbarWidth) !important;
+  margin-top: 0px;
+  border      : none !important;
+  -moz-appearance: none !important;
+   
 }
-#TabsToolbar {
-  margin-top: 1px;
-}
-#TabsToolbar { background: #141c21 !important; }
+
 #PersonalToolbar {
     -moz-box-ordinal-group: 2 !important;
-    padding-top: 1px !important;
+    padding-top: 0px !important;
+    background-color: white !important;
 }
-#PersonalToolbar { background: #141c21 !important; }
+
 #PersonalToolbar .toolbarbutton-text { color: white !important; }
 #nav-bar {
   margin-right: calc(100vw - var(--navbarWidth)) !important;
+  background-color: white !important;
 }
 #PanelUI-button {
 	display: block !important;
@@ -135,7 +145,7 @@
 
 /* These two exist for oneliner compatibility */
 #nav-bar{ width: var(--uc-navigationbar-width,33vw) }
-#TabsToolbar{ width: calc(100vw - var(--uc-navigationbar-width,0px)) }
+#TabsToolbar{ width: calc(100vw - var(--uc-navigationbar-width,33vw)) }
 
 /* Don't apply transform before window has been fully created */
 :root:not([sessionrestored]) #navigator-toolbox{ transform:none !important }
@@ -163,7 +173,6 @@
 /* Simplifying interface */
 
 #nav-bar {
-  background  : #141c21 !important;
   box-shadow  : none !important;
 }
 
