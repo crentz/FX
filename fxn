@@ -26,6 +26,8 @@ pulseaudio \
 pavucontrol \
 vlc \
 slim \
+blackbird-gtk-theme \
+darkpurpy-icon-theme \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-realtek \
