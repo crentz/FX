@@ -41,6 +41,9 @@
   -moz-appearance: none !important;
 }
 
+#personal-toolbar-empty {
+  visibility: hidden !important;
+}
 
 /* Nav bar*/
 #nav-bar {
@@ -82,3 +85,4 @@
 #page-action-buttons {
     display: none !important;
 }
+
