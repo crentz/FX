@@ -105,6 +105,11 @@ cd ;
 rm -rf fxn ;
 rm .bash_history
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
+su -m fluxuan -c "firefox -createprofile fluxuan" ;
+su -m fluxuan -c "mkdir /.mozilla/firefox/*.fluxuan/chrome" ;
+su -m fluxuan -c "cp /usr/share/fx/userChrome.css /.mozilla/firefox/*.fluxuan/chrome" ;
+su -m fluxuan -c "cp /usr/share/fx/user.js /.mozilla/firefox/*.fluxuan/" ;
+
 echo "####################################################" ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
 echo "####################################################" ;
