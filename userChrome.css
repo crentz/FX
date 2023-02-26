@@ -8,6 +8,8 @@
 	--navbarWidth     : 33vw; 
 }
 
+#PanelUI-menu-button {display: none;}
+
 /* Title bar */
 .titlebar-buttonbox {
     display: none !important;
@@ -38,6 +40,7 @@
   border      : none !important;
   -moz-appearance: none !important;
 }
+
 
 /* Nav bar*/
 #nav-bar {
@@ -79,11 +82,3 @@
 #page-action-buttons {
     display: none !important;
 }
-
-#PanelUI-button {
-	display: block !important;
-	position: fixed !important;
-	right: 0px !important; /*close/max/min placement*/
-	padding-top: 4px !important;
-}
-
