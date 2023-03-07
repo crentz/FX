@@ -27,7 +27,7 @@ pavucontrol \
 vlc \
 slim \
 blackbird-gtk-theme \
-numix-icon-theme \
+paper-icon-theme \
 firmware-linux-nonfree \
 firmware-misc-nonfree \
 firmware-realtek \
@@ -64,6 +64,7 @@ sed -i 's/Devuan/Fluxuan/' /etc/os-release ;
 sed -i 's/Debian/Fluxuan/' /etc/os-release ;
 sed -i 's/devuan/Fluxuan/' /etc/os-release ;
 sed -i 's/Devuan/Fluxuan/' /usr/lib/os-release ;
+sed -i 's/Debian/Fluxuan/' /usr/lib/os-release ;
 sed -i 's/devuan/Fluxuan/' /usr/lib/os-release ;
 echo "vm.swappiness = 10" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_ratio = 40" >>  /etc/sysctl.d/fluxuanctl.conf ;
