@@ -26,6 +26,7 @@ pulseaudio \
 pavucontrol \
 vlc \
 slim \
+yad \
 blackbird-gtk-theme \
 paper-icon-theme \
 firmware-linux-nonfree \
@@ -49,8 +50,9 @@ xpaint \
 scrot \
 xpdf \
 firefox-esr \
+bleachbit \
 mate-power-manager \
-xarchiver -y -qq >/dev/null ;
+xarchiver -y -qq ;
 usermod -aG sudo fluxuan ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
@@ -104,7 +106,6 @@ apt update ;
 cp -R .config/ .fluxbox/ .gtkrc-2.0 .fehbg .profile .bashrc /home/fluxuan/ ;
 cd ;
 rm -rf fxn ;
-rm .bash_history
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
 echo "####################################################" ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
