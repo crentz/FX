@@ -22,10 +22,8 @@ udevil \
 xcompmgr \
 plank \
 volumeicon-alsa \
-pulseaudio \
-pavucontrol \
-vlc \
-slim \
+alsa-utils \
+lightdm-gtk-greeter \
 yad \
 blackbird-gtk-theme \
 paper-icon-theme \
