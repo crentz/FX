@@ -7,7 +7,7 @@
 echo "Cleaning and installing needed packages, please wait.... !!!!" ;
 apt clean ;
 apt autoclean ;
-sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free/' /etc/apt/sources.list ;
+sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free-firmware/' /etc/apt/sources.list ;
 apt-get update && apt-get upgrade -y -qq ;
 apt-get install sudo \
 xz-utils \
