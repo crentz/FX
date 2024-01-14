@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# Set strict mode
+set -euo pipefail
+
 # Check root privileges
 if [ "$EUID" -ne 0 ]; then
-  whiptail --msgbox "Please run as root." 8 40
+  echo "Please run as root."
   exit 1
 fi
 
@@ -25,71 +28,44 @@ RSYNC_TARGET_DIR="/tmp/fluxuan-rsync-target"
 # Create a temporary directory for whiptail messages
 TMP_MSG_DIR=$(mktemp -d)
 
-# Function to show loading bar
-show_loading() {
-  (
-    echo "XXX"
-    echo "10"
-    echo "Creating system..."
-    sleep 1
+# Create system
+echo "Creating system..."
+# Use rsync to clone the system
+rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / "$RSYNC_TARGET_DIR"
 
-    # Use rsync to clone the system
-    rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / "$RSYNC_TARGET_DIR"
+# Create live ISO directory
+echo "Creating live ISO directory..."
+# Create a directory for the live ISO
+LIVE_ISO_DIR="/tmp/fluxuan-live-iso"
+mkdir -p "$LIVE_ISO_DIR/live"
 
-    echo "XXX"
-    echo "50"
-    echo "Creating live ISO directory..."
-    sleep 1
+# Copy rsynced content to live ISO directory
+echo "Copying rsynced content to live ISO directory..."
+# Copy the rsynced content to the live ISO directory
+cp -a "$RSYNC_TARGET_DIR"/* "$LIVE_ISO_DIR/live"
 
-    # Create a directory for the live ISO
-    LIVE_ISO_DIR="/tmp/fluxuan-live-iso"
-    mkdir -p "$LIVE_ISO_DIR/live"
+# Create squashfs file
+echo "Creating squashfs file..."
+# Create the squashfs file
+mksquashfs "$LIVE_ISO_DIR" "$ISO_DESTINATION" -comp xz -e boot -noappend
 
-    echo "XXX"
-    echo "75"
-    echo "Copying rsynced content to live ISO directory..."
-    sleep 1
+# Configure syslinux
+echo "Configuring syslinux..."
+# Install syslinux
+apt-get install -y syslinux
+syslinux -d /syslinux -i "$ISO_DESTINATION"
 
-    # Copy the rsynced content to the live ISO directory
-    cp -a "$RSYNC_TARGET_DIR"/* "$LIVE_ISO_DIR/live"
+# Configure GRUB and ISOLINUX
+echo "Configuring GRUB and ISOLINUX..."
+# Install GRUB for BIOS boot
+apt-get install -y grub-pc
+grub-install --target=i386-pc --recheck --force --boot-directory="$ISO_DESTINATION/boot" /dev/sdX  # Replace /dev/sdX with your target device
 
-    echo "XXX"
-    echo "90"
-    echo "Creating squashfs file..."
-    sleep 1
+# Install GRUB for UEFI boot
+apt-get install -y grub-efi
+grub-install --target=x86_64-efi --efi-directory="$ISO_DESTINATION/boot/efi" --boot-directory="$ISO_DESTINATION/boot" --removable
 
-    # Create the squashfs file
-    mksquashfs "$LIVE_ISO_DIR" "$ISO_DESTINATION" -comp xz -e boot
+# Update ISOLINUX configuration
+sed -i 's|/boot|/live|' "$ISO_DESTINATION/boot/syslinux/isolinux.cfg"
 
-    echo "XXX"
-    echo "95"
-    echo "Configuring syslinux..."
-    sleep 1
-
-    # Install syslinux
-    apt-get install -y syslinux
-
-    # Configure syslinux
-    syslinux -d /syslinux -i "$ISO_DESTINATION"
-
-    echo "XXX"
-    echo "100"
-    echo "Configuring ISOLINUX..."
-    sleep 1
-
-    # Install ISOLINUX
-    apt-get install -y isolinux
-
-    # Configure ISOLINUX
-    mv "$ISO_DESTINATION" /tmp/iso
-    isolinux --install /tmp/iso
-    mv /tmp/iso "$ISO_DESTINATION"
-
-    echo "XXX"
-  ) | whiptail --title "Live ISO Creation" --gauge "Please wait..." 8 60 0
-}
-
-# Execute the loading bar function
-show_loading
-
-whiptail --msgbox "Live ISO created successfully: $ISO_DESTINATION" 8 60
+echo "Live ISO created successfully: $ISO_DESTINATION"
