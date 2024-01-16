@@ -44,7 +44,7 @@ lxappearance \
 viewnior \
 sakura \
 scrot \
-firefox-esr \
+gufw \
 mate-power-manager \
 xarchiver -y -qq ;
 usermod -aG sudo fluxuan ;
