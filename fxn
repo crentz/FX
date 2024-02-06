@@ -17,7 +17,7 @@ xserver-xorg \
 xinit \
 fluxbox \
 lxpolkit \
-pcmanfm \
+thunar \
 udevil \
 xcompmgr \
 wbar \
@@ -37,15 +37,14 @@ firmware-amd-graphics \
 firmware-b43-installer \
 firmware-b43legacy-installer \
 network-manager-gnome -y -qq >/dev/null ;
-apt-get install --no-install-recommends synaptic \
+apt-get install --no-install-recommends gnome-packagekit \
 gparted \
 featherpad \
 lxappearance \
 viewnior \
 sakura \
 scrot \
-gufw \
-firefox-esr \
+apulse \
 mate-power-manager \
 xarchiver -y -qq ;
 usermod -aG sudo fluxuan ;
@@ -103,4 +102,5 @@ rm -rf fxn ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
 echo "####################################################" ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
+echo "Please install your desired midori browser !" ;
 echo "####################################################" ;
