@@ -69,7 +69,7 @@ update-grub ;
 apt clean ;
 apt autoclean ;
 apt update ;
-cp -R /etc/skel/* /home/fluxuan/ ;
+cp -r /etc/skel/. /home/fluxuan ;
 cd ;
 rm -rf fxn ;
 chown -R fluxuan:fluxuan /home/fluxuan/ ;
