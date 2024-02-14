@@ -17,14 +17,12 @@ xserver-xorg \
 xinit \
 fluxbox \
 lxpolkit \
-thunar \
+pcmanfm \
 udevil \
 xcompmgr \
-wbar \
 volumeicon-alsa \
 alsa-utils \
 slim \
-yad \
 blackbird-gtk-theme \
 paper-icon-theme \
 firmware-linux-nonfree \
@@ -37,7 +35,7 @@ firmware-amd-graphics \
 firmware-b43-installer \
 firmware-b43legacy-installer \
 network-manager-gnome -y -qq >/dev/null ;
-apt-get install --no-install-recommends gnome-packagekit \
+apt-get install --no-install-recommends synaptic \
 gparted \
 featherpad \
 lxappearance \
