@@ -9,45 +9,11 @@ apt clean ;
 apt autoclean ;
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free-firmware/' /etc/apt/sources.list ;
 apt-get update && apt-get upgrade -y -qq ;
-apt-get install sudo \
-xz-utils \
-wget \
-unzip \
-xserver-xorg \
-xinit \
-fluxbox \
-lxpolkit \
-pcmanfm \
-udevil \
-xcompmgr \
-volumeicon-alsa \
-alsa-utils \
-slim \
-blackbird-gtk-theme \
-paper-icon-theme \
-firmware-linux-nonfree \
-firmware-misc-nonfree \
-firmware-realtek \
-firmware-atheros \
-firmware-iwlwifi \
-firmware-brcm80211 \
-firmware-amd-graphics \
-firmware-b43-installer \
-firmware-b43legacy-installer \
-network-manager-gnome -y -qq >/dev/null ;
-apt-get install --no-install-recommends synaptic \
-gparted \
-featherpad \
-lxappearance \
-viewnior \
-sakura \
-scrot \
-apulse \
-mate-power-manager \
-xarchiver -y -qq ;
+apt-get install sudo xz-utils wget unzip xserver-xorg xinit fluxbox lxpolkit pcmanfm udevil volumeicon-alsa alsa-utils slim blackbird-gtk-theme paper-icon-theme firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer network-manager-gnome -y -qq >/dev/null ;
+apt-get install --no-install-recommends synaptic gparted featherpad lxappearance viewnior sakura scrot apulse mate-power-manager xarchiver -y -qq ;
 usermod -aG sudo fluxuan ;
-sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 rm -rf /usr/share/fluxbox/styles ;
+sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
 sed -i 's/Debian/Fluxuan/' /etc/motd ;
 sed -i 's/Devuan/Fluxuan/' /etc/issue ;
@@ -64,6 +30,18 @@ echo "vm.swappiness = 10" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_ratio = 40" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.dirty_background_ratio = 20" >>  /etc/sysctl.d/fluxuanctl.conf ;
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "kernel.kptr_restrict=1" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "net.core.bpf_jit_harden=2" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "dev.tty.ldisc_autoload=0" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "vm.unprivileged_userfaultfd=0" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "kernel.kexec_load_disabled=1" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "kernel.yama.ptrace_scope=2" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "vm.mmap_rnd_bits=32" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "vm.mmap_rnd_compat_bits=16" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "fs.protected_fifos=2" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "fs.protected_regular=2" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "net.ipv4.conf.all.rp_filter=1" >> /etc/sysctl.d/fluxuanctl.conf ;
+echo "net.ipv4.conf.default.rp_filter=1" >> /etc/sysctl.d/fluxuanctl.conf ;
 curl -LJO raw.githubusercontent.com/crentz/fx/main/mmaker.deb ;
 apt install ./mmaker.deb -y -qq ;
 rm -rf mmaker.deb ;
