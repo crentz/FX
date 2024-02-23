@@ -11,7 +11,6 @@ sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free-firmware/' /etc/apt/sources
 apt-get update && apt-get upgrade -y -qq ;
 apt-get install sudo xz-utils wget unzip xserver-xorg xinit fluxbox lxpolkit pcmanfm udevil volumeicon-alsa alsa-utils slim blackbird-gtk-theme paper-icon-theme firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer network-manager-gnome -y -qq >/dev/null ;
 apt-get install --no-install-recommends synaptic gparted featherpad lxappearance viewnior sakura scrot apulse mate-power-manager xarchiver -y -qq ;
-usermod -aG sudo fluxuan ;
 rm -rf /usr/share/fluxbox/styles ;
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf ;
 sed -i 's/Devuan/Fluxuan/' /etc/motd ;
@@ -52,7 +51,7 @@ cd /etc/skel/ ;
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fxi.tar.xz ;
 tar -xf fxi.tar.xz ;
 rm -rf fxi.tar.xz ;
-chmod +x Byef welcome fxmenuupdate fluxuan-installer fluxuan-snapshot ;
+chmod +x .local/bin/*
 mv fxslim /usr/share/slim/themes/;
 sed -i 's/desktop-slim-theme/fxslim/' /etc/slim.conf ;
 sed -i 's/#default_user        simone/default_user fluxuan/' /etc/slim.conf ;
@@ -68,11 +67,7 @@ cp /usr/share/fx/splash.png /boot/grub/ ;
 update-grub ;
 apt clean ;
 apt autoclean ;
-apt update ;
-cp -r /etc/skel/. /home/fluxuan ;
-cd ;
 rm -rf fxn ;
-chown -R fluxuan:fluxuan /home/fluxuan/ ;
 echo "####################################################" ;
 echo "Packages finished and installed succesfully. Enjoy !" ;
 echo "####################################################" ;
