@@ -3,8 +3,8 @@ apt clean
 apt autoclean
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free-firmware/' /etc/apt/sources.list
 apt-get update
-apt-get install sudo xz-utils wget unzip xserver-xorg xinit fluxbox lxpolkit thunar thunar-archive-plugin udevil volumeicon-alsa alsa-utils slim blackbird-gtk-theme paper-icon-theme firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer network-manager-gnome conky xcompmgr xpdf qutebrowser arandr bleachbit -y -qq
-apt-get install --no-install-recommends synaptic gparted featherpad lxappearance viewnior sakura scrot apulse mate-power-manager xarchiver -y -qq
+apt-get install sudo xz-utils wget unzip xserver-xorg xinit fluxbox lxpolkit thunar thunar-archive-plugin udevil volumeicon-alsa alsa-utils slim blackbird-gtk-theme paper-icon-theme firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer network-manager-gnome conky qutebrowser arandr bleachbit -y -qq
+apt-get install --no-install-recommends synaptic gparted featherpad lxappearance sakura scrot apulse mate-power-manager xarchiver -y -qq
 rm -rf /usr/share/fluxbox/styles
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf
 sed -i 's/Devuan/Fluxuan/' /etc/motd
