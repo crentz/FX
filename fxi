@@ -50,6 +50,7 @@ mv 40-libinput.conf /etc/X11/xorg.conf.d/
 mv slim.conf /etc/
 cd
 rm -rf fxi
+usermod -aG sudo fluxuan
 echo "Removing documentation..."
 # if we need to keep copyright files for legal reasons:
 # find /usr/share/doc -depth -type f ! -name copyright | xargs rm || true
