@@ -3,8 +3,8 @@ apt clean
 apt autoclean
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free-firmware/' /etc/apt/sources.list
 apt-get update
-apt-get install sudo xz-utils whiptail wget unzip xserver-xorg xinit fluxbox lxpolkit thunar thunar-archive-plugin udevil volumeicon-alsa alsa-utils slim blackbird-gtk-theme paper-icon-theme  network-manager-gnome conky qutebrowser arandr -y -qq
-apt-get install --no-install-recommends synaptic firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer gparted featherpad lxappearance sakura scrot apulse mate-power-manager xarchiver -y -qq
+apt-get install sudo xz-utils whiptail wget unzip xserver-xorg xinit fluxbox lxpolkit thunar thunar-archive-plugin udevil volumeicon-alsa alsa-utils slim blackbird-gtk-theme paper-icon-theme  network-manager-gnome conky qutebrowser firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer apulse arandr -y
+apt-get install --no-install-recommends synaptic gparted featherpad lxappearance sakura scrot mate-power-manager xarchiver -y
 rm -rf /usr/share/fluxbox/styles
 sed -i 's/false/true/' /etc/NetworkManager/NetworkManager.conf
 sed -i 's/Devuan/Fluxuan/' /etc/motd
@@ -56,99 +56,6 @@ echo "Removing documentation..."
 # else:
 find /usr/share/doc -depth -type f | xargs rm || true
 rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* /usr/share/lintian/* /usr/share/linda/* /var/cache/man/*
-MODULES="
-xenfs
-xen_privcmd
-binfmt_misc
-intel_rapl_msr
-intel_rapl_common
-intel_pmc_core
-kvm_intel
-kvm
-irqbypass
-ghash_clmulni_intel
-sha512_ssse3
-sha512_generic
-aesni_intel
-crypto_simd
-cryptd
-ppdev
-joydev
-hid_generic
-usbhid
-hid
-pcspkr
-parport_pc
-parport
-button
-serio_raw
-sg
-evdev
-fuse
-loop
-efi_pstore
-dm_mod
-configfs
-ip_tables
-x_tables
-autofs4
-ext4
-crc16
-mbcache
-jbd2
-crc32c_generic
-sr_mod
-bochs
-cdrom
-ata_generic
-drm_vram_helper
-drm_kms_helper
-drm_ttm_helper
-ttm
-ata_piix
-uhci_hcd
-ehci_hcd
-libata
-crct10dif_pclmul
-crct10dif_common
-xen_netfront
-drm
-xen_blkfront
-crc32_pclmul
-crc32c_intel
-psmouse
-scsi_mod
-i2c_piix4
-usbcore
-usb_common
-scsi_common
-floppy
-"
-
-# Now, remove modules that aren't in this list
-
-cleanout_modules()
-{
-	dir=$1/kernel
-	umask 0022
-	mkdir ${dir}.new
-	for f in $MODULES; do
-		path=`find ${dir} -type f -name $f.ko | tail -1`
-		if [ "x${path}" = "x" ]; then
-			continue
-		fi
-		d=`dirname ${path}`
-		newd=`echo $d | sed 's/kernel/kernel.new/'`
-		mkdir -p ${newd}
-		mv ${path} ${newd}/
-	done
-	rm -rf ${dir}
-	mv ${dir}.new ${dir}
-}
-
-for f in /lib/modules/*; do
-	cleanout_modules $f
-done
 apt-get clean
 apt-get autoclean
 apt-get autoremove
