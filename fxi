@@ -19,6 +19,7 @@ sed -i 's/devuan/Fluxuan/' /etc/os-release
 sed -i 's/Devuan/Fluxuan/' /usr/lib/os-release
 sed -i 's/Debian/Fluxuan/' /usr/lib/os-release
 sed -i 's/devuan/Fluxuan/' /usr/lib/os-release
+sed -i 's/Devuan/Fluxuan/' /usr/lib/os-release
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/fluxuanctl.conf
 echo "kernel.kptr_restrict=1" >> /etc/sysctl.d/fluxuanctl.conf
 echo "net.core.bpf_jit_harden=2" >> /etc/sysctl.d/fluxuanctl.conf
@@ -50,11 +51,6 @@ mv 40-libinput.conf /etc/X11/xorg.conf.d/
 mv slim.conf /etc/
 cd
 rm -rf fxi
-usermod -aG sudo fluxuan
-echo "Removing documentation..."
-# if we need to keep copyright files for legal reasons:
-# find /usr/share/doc -depth -type f ! -name copyright | xargs rm || true
-# else:
 find /usr/share/doc -depth -type f | xargs rm || true
 rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* /usr/share/lintian/* /usr/share/linda/* /var/cache/man/*
 apt-get clean
