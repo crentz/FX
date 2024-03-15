@@ -4,7 +4,7 @@ apt autoclean
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free non-free-firmware/' /etc/apt/sources.list
 touch /etc/apt/apt.conf.d/80updatehook
 echo "DPkg::Post-Invoke {"fxmenuupdate";};" >> /etc/apt/apt.conf.d/80updatehook
-find /usr/share/doc \( -name "*.gz" -o -name "*.pdf" -o -name "*.tex" \) -type f -delete
+sudo find /usr/share/doc \( -name "*.gz" -o -name "*.pdf" -o -name "*.tex" \) -type f -exec rm -rf {} +
 rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* /usr/share/lintian/* /usr/share/linda/* /var/cache/man/*
 cat <<EOF > /etc/dpkg/dpkg.cfg.d/01_nodoc
 path-exclude /usr/share/doc/*
@@ -40,7 +40,8 @@ mv 40-libinput.conf /etc/X11/xorg.conf.d/
 mv slim.conf /etc/
 cd
 rm -rf fxi
-find /usr/share/doc \( -name "*.gz" -o -name "*.pdf" -o -name "*.tex" \) -type f -delete
+sudo find /usr/share/doc \( -name "*.gz" -o -name "*.pdf" -o -name "*.tex" \) -type f -exec rm -rf {} +
+find /usr/share/locale -mindepth 1 -maxdepth 1 -type d ! -name 'en*' -exec rm -rf {} \;
 rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* /usr/share/lintian/* /usr/share/linda/* /var/cache/man/*
 apt-get clean
 apt-get autoclean
