@@ -31,11 +31,9 @@ tar -xf fx.tar.xz
 rm -rf fx.tar.xz
 chmod +x fxmenuupdate fwel widevine fluxuan-installer
 mv fxmenuupdate fwel widevine fluxuan-installer /usr/bin/
-mv fxslim /usr/share/slim/themes/
 mv fx /usr/share/
 echo "fluxuan ALL=(ALL) NOPASSWD: /usr/bin/fluxuan-installer" >> /etc/sudoers
 mv 40-libinput.conf /etc/X11/xorg.conf.d/
-mv slim.conf /etc/
 touch /etc/apt/apt.conf.d/80updatehook
 echo "DPkg::Post-Invoke {"fxmenuupdate";};" >> /etc/apt/apt.conf.d/80updatehook
 cd
