@@ -2,7 +2,6 @@
 apt clean
 apt autoclean
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free non-free-firmware/' /etc/apt/sources.list
-
 find /usr/share/doc \( -name "*.gz" -o -name "*.pdf" -o -name "*.tex" \) -type f -exec rm -rf {} +
 rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* /usr/share/lintian/* /usr/share/linda/* /var/cache/man/*
 cat <<EOF > /etc/dpkg/dpkg.cfg.d/01_nodoc
@@ -38,8 +37,8 @@ touch /etc/apt/apt.conf.d/80updatehook
 echo "DPkg::Post-Invoke {"fxmenuupdate";};" >> /etc/apt/apt.conf.d/80updatehook
 cd
 rm -rf fxi
-sed -i 's/^#auto_login[[:space:]]*no/auto_login yes/' /mnt/etc/slim.conf
-sed -i 's/^#default_user[[:space:]]*simone/default_user fluxuan/' /mnt/etc/slim.conf
+sed -i 's/^#auto_login[[:space:]]*no/auto_login yes/' /etc/slim.conf
+sed -i 's/^#default_user[[:space:]]*simone/default_user fluxuan/' /etc/slim.conf
 find /usr/share/doc \( -name "*.gz" -o -name "*.pdf" -o -name "*.tex" \) -type f -exec rm -rf {} +
 find /usr/share/locale -mindepth 1 -maxdepth 1 -type d ! -name 'en*' -exec rm -rf {} \;
 rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* /usr/share/lintian/* /usr/share/linda/* /var/cache/man/*
