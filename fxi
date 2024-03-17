@@ -31,12 +31,14 @@ rm -rf fx.tar.xz
 chmod +x fxmenuupdate fwel widevine fluxuan-installer
 mv fxmenuupdate fwel widevine fluxuan-installer /usr/bin/
 mv fx /usr/share/
+mv fxslim /usr/share/slim/themes/
 echo "fluxuan ALL=(ALL) NOPASSWD: /usr/bin/fluxuan-installer" >> /etc/sudoers
 mv 40-libinput.conf /etc/X11/xorg.conf.d/
 touch /etc/apt/apt.conf.d/80updatehook
 echo "DPkg::Post-Invoke {"fxmenuupdate";};" >> /etc/apt/apt.conf.d/80updatehook
 cd
 rm -rf fxi
+sed -i 's/current_theme.*/current_theme fxslim/' /etc/slim.conf
 sed -i 's/^#auto_login[[:space:]]*no/auto_login yes/' /etc/slim.conf
 sed -i 's/^#default_user[[:space:]]*simone/default_user fluxuan/' /etc/slim.conf
 find /usr/share/doc \( -name "*.gz" -o -name "*.pdf" -o -name "*.tex" \) -type f -exec rm -rf {} +
