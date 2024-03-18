@@ -2,8 +2,6 @@
 apt clean
 apt autoclean
 sed -i '/^\([^#].*main\)*$/s/main/& contrib non-free non-free-firmware/' /etc/apt/sources.list
-find /usr/share/doc \( -name "*.gz" -o -name "*.pdf" -o -name "*.tex" \) -type f -exec rm -rf {} +
-rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* /usr/share/lintian/* /usr/share/linda/* /var/cache/man/*
 cat <<EOF > /etc/dpkg/dpkg.cfg.d/01_nodoc
 path-exclude /usr/share/doc/*
 # we need to keep copyright files for legal reasons
@@ -51,4 +49,5 @@ apt-get autoremove
 rm -rf /tmp/*
 rm -rf /var/tmp/*
 rm -rf /var/log/*.gz
+update-initramfs -u -k all
 echo "Everything installed / All finished !!!"
