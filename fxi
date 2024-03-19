@@ -28,11 +28,9 @@ sed -i 's/current_theme.*/current_theme fxslim/' /etc/slim.conf
 sed -i 's/^#auto_login[[:space:]]*no/auto_login yes/' /etc/slim.conf
 sed -i 's/^#default_user[[:space:]]*simone/default_user fluxuan/' /etc/slim.conf
 find /usr/share/locale -mindepth 1 -maxdepth 1 -type d ! -name 'en*' -exec rm -rf {} \;
+apt-get remove --purge zutty -y
+apt-get autoremove -y
 apt-get clean
 apt-get autoclean
 apt-get autoremove
-rm -rf /tmp/*
-rm -rf /var/tmp/*
-rm -rf /var/log/*.gz
-update-initramfs -u -k all
 echo "Everything installed / All finished !!!"
