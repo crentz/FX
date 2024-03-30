@@ -1,7 +1,7 @@
 #!/bin/bash
 apt-get update
-apt-get install sudo xz-utils whiptail wget unzip xserver-xorg xinit  fluxbox lxpolkit thunar thunar-archive-plugin udevil volumeicon-alsa alsa-utils slim blackbird-gtk-theme network-manager-gnome conky qutebrowser firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer apulse arandr -y -qq
-apt-get install --no-install-recommends net-tools isc-dhcp-client synaptic gparted featherpad squashfs-tools nano lxappearance scrot xarchiver -y -qq
+apt-get install sudo xz-utils whiptail wget unzip xserver-xorg xinit fluxbox lxpolkit thunar thunar-archive-plugin udevil volumeicon-alsa alsa-utils slim blackbird-gtk-theme network-manager-gnome conky qutebrowser firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer apulse arandr -y -qq
+apt-get install --no-install-recommends net-tools isc-dhcp-client synaptic gparted featherpad rsync nano lxappearance scrot xarchiver -y -qq
 rm -rf /usr/share/fluxbox/styles
 sed -i 's/Devuan/Fluxuan/g; s/Debian/Fluxuan/g; s/devuan/Fluxuan/g' /etc/motd /etc/issue /etc/issue.net /etc/os-release /usr/lib/os-release
 curl -LJO raw.githubusercontent.com/crentz/fx/main/mmaker.deb
