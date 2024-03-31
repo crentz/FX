@@ -8,6 +8,7 @@ curl -LJO raw.githubusercontent.com/crentz/fx/main/mmaker.deb
 apt-get install ./mmaker.deb -y -qq
 rm -rf mmaker.deb
 cd /etc/skel
+rm -rf fxi
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fx.tar.xz
 tar -xf fx.tar.xz
 rm -rf fx.tar.xz
