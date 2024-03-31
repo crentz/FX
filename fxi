@@ -8,7 +8,6 @@ curl -LJO raw.githubusercontent.com/crentz/fx/main/mmaker.deb
 apt-get install ./mmaker.deb -y -qq
 rm -rf mmaker.deb
 cd /etc/skel
-rm -rf fxi
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fx.tar.xz
 tar -xf fx.tar.xz
 rm -rf fx.tar.xz
@@ -20,8 +19,6 @@ echo "fluxuan ALL=(ALL) NOPASSWD: /usr/bin/fluxuan-installer" >> /etc/sudoers
 mv 40-libinput.conf /etc/X11/xorg.conf.d/
 touch /etc/apt/apt.conf.d/80updatehook
 echo "DPkg::Post-Invoke {"fxmenuupdate";};" >> /etc/apt/apt.conf.d/80updatehook
-cd
-rm -rf fxi
 sed -i 's/current_theme.*/current_theme fxslim/' /etc/slim.conf
 sed -i 's/^#auto_login[[:space:]]*no/auto_login yes/' /etc/slim.conf
 sed -i 's/^#default_user[[:space:]]*simone/default_user fluxuan/' /etc/slim.conf
