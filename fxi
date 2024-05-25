@@ -1,7 +1,8 @@
 #!/bin/bash
 apt-get update
-apt-get install sudo xz-utils whiptail wget unzip xserver-xorg xinit fluxbox lxpolkit thunar thunar-archive-plugin udevil volumeicon-alsa alsa-utils slim blackbird-gtk-theme network-manager-gnome conky qutebrowser firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer apulse arandr -y -qq
+apt-get install sudo xz-utils whiptail wget unzip xserver-xorg xinit fluxbox lxpolkit pcmanfm udevil volumeicon-alsa alsa-utils slim sakura blackbird-gtk-theme connman cmst connman-vpn conky qutebrowser firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer apulse arandr -y -qq
 apt-get install --no-install-recommends net-tools isc-dhcp-client synaptic gparted featherpad rsync nano lxappearance scrot xarchiver -y -qq
+apt-get remove --purge zutty -y
 rm -rf /usr/share/fluxbox/styles
 sed -i 's/Devuan/Fluxuan/g; s/Debian/Fluxuan/g; s/devuan/Fluxuan/g' /etc/motd /etc/issue /etc/issue.net /etc/os-release /usr/lib/os-release
 curl -LJO raw.githubusercontent.com/crentz/fx/main/mmaker.deb
@@ -11,8 +12,8 @@ cd /etc/skel
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fx.tar.xz
 tar -xf fx.tar.xz
 rm -rf fx.tar.xz
-chmod +x fxmenuupdate fwel widevine fluxuan-installer
-mv fxmenuupdate fwel widevine fluxuan-installer /usr/bin/
+chmod +x fxmenuupdate fwel widevine fluxuan-installer fluxuan-usb-creator
+mv fxmenuupdate fwel widevine fluxuan-installer fluxuan-usb-creator /usr/bin/
 mv fx /usr/share/
 mv fxslim /usr/share/slim/themes/
 echo "fluxuan ALL=(ALL) NOPASSWD: /usr/bin/fluxuan-installer" >> /etc/sudoers
@@ -23,8 +24,6 @@ sed -i 's/current_theme.*/current_theme fxslim/' /etc/slim.conf
 sed -i 's/^#auto_login[[:space:]]*no/auto_login yes/' /etc/slim.conf
 sed -i 's/^#default_user[[:space:]]*simone/default_user fluxuan/' /etc/slim.conf
 find /usr/share/locale -mindepth 1 -maxdepth 1 -type d ! -name 'en*' -exec rm -rf {} \;
-apt-get remove --purge zutty -y
-update-alternatives --set x-terminal-emulator /usr/bin/xterm
 cd 
 rm -rf fxi
 apt-get autoremove -y
