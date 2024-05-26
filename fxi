@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update
-apt-get install sudo xz-utils whiptail wget unzip xserver-xorg x11-utils xinit fluxbox lxpolkit pcmanfm udevil volumeicon-alsa alsa-utils slim sakura blackbird-gtk-theme connman cmst connman-vpn conky xcompmgr qutebrowser firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer apulse arandr -y -qq
+apt-get install sudo xz-utils whiptail wget unzip xserver-xorg x11-utils xinit fluxbox lxpolkit pcmanfm udevil volumeicon-alsa alsa-utils slim sakura blackbird-gtk-theme connman cmst connman-vpn conky viewnior qutebrowser firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer apulse arandr -y -qq
 apt-get install --no-install-recommends net-tools isc-dhcp-client synaptic gparted featherpad rsync nano lxappearance scrot xarchiver -y -qq
 apt-get remove --purge zutty -y
 rm -rf /usr/share/fluxbox/styles
