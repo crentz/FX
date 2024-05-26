@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update
-apt-get install sudo xz-utils whiptail wget unzip xserver-xorg xinit fluxbox lxpolkit pcmanfm udevil volumeicon-alsa alsa-utils slim sakura blackbird-gtk-theme connman cmst connman-vpn conky picom qutebrowser firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer apulse arandr -y -qq
+apt-get install sudo xz-utils whiptail wget unzip xserver-xorg xinit fluxbox lxpolkit pcmanfm udevil volumeicon-alsa alsa-utils slim sakura blackbird-gtk-theme connman cmst connman-vpn conky xcompmgr qutebrowser firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-iwlwifi firmware-brcm80211 firmware-amd-graphics firmware-b43-installer firmware-b43legacy-installer apulse arandr -y -qq
 apt-get install --no-install-recommends net-tools isc-dhcp-client synaptic gparted featherpad rsync nano lxappearance scrot xarchiver -y -qq
 apt-get remove --purge zutty -y
 rm -rf /usr/share/fluxbox/styles
@@ -13,7 +13,7 @@ curl -LJO raw.githubusercontent.com/crentz/fx/main/fx.tar.xz
 tar -xf fx.tar.xz
 rm -rf fx.tar.xz
 chmod +x fxmenuupdate fwel widevine fluxuan-installer fluxuan-usb-creator
-mv fxmenuupdate fwel widevine fluxuan-installer fluxuan-usb-creator /usr/bin/
+mv fxmenuupdate welcome widevine fluxuan-installer fluxuan-usb-creator /usr/bin/
 mv fx /usr/share/
 mv fxslim /usr/share/slim/themes/
 echo "fluxuan ALL=(ALL) NOPASSWD: /usr/bin/fluxuan-installer" >> /etc/sudoers
