@@ -12,7 +12,7 @@ cd /etc/skel
 curl -LJO raw.githubusercontent.com/crentz/fx/main/fx.tar.xz
 tar -xf fx.tar.xz
 rm -rf fx.tar.xz
-chmod +x fxmenuupdate fwel widevine fluxuan-installer fluxuan-usb-creator
+chmod +x fxmenuupdate welcome widevine fluxuan-installer fluxuan-usb-creator
 mv fxmenuupdate welcome widevine fluxuan-installer fluxuan-usb-creator /usr/bin/
 mv fx /usr/share/
 mv fxslim /usr/share/slim/themes/
